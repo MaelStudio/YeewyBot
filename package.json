@@ -1,7 +1,7 @@
 {
   "name": "yeewy",
   "version": "1.0.0",
-  "description": "",
+  "description": "A fun Discord bot featuring an economy, moderation and warning system !",
   "main": "index.js",
   "engines": {
     "node": "16.x"
