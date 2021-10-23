@@ -22,7 +22,7 @@ module.exports = {
 			member.ban()
 		}
 
-		message.channel.send(`✅ • Banned member \`${member.user.tag}\` from the server.`)
+		message.channel.send(`✅ • Banned member **${member.user.tag}** from the server.`)
 		
 	}
 }

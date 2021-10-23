@@ -66,10 +66,10 @@ client.once('ready', async () => {
 
 	console.log(`[+] Logged in as ${client.user.tag}`);
 	console.log('——————————————————————————————');
-	console.log(`Bot owner: ${botOwner.tag}`);
 	console.log(`Client ID: ${client.user.id}`);
 	console.log(`Client status: ${client.presence.status}`);
 	console.log(`Currently on ${guildIds.length} guilds`);
+	console.log(`Bot owner: ${botOwner.tag}`);
 	console.log('——————————————————————————————');
 
 	// changing status
