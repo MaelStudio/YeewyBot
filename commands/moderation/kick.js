@@ -17,8 +17,8 @@ module.exports = {
 		if(!member.kickable) return message.channel.send('⚠️ • I cannot kick this member.');
 		if(member.roles.highest.position > message.member.roles.highest.position) return message.channel.send('⚠️ • You cannot kick this member because their role is higher.');
 		
-		member.kick({reason: reason})
-		message.channel.send(`✅ • Kicked member **${member.user.tag}** from the server.`)
+		member.kick(reason);
+		message.channel.send(`✅ • Kicked member **${member.user.tag}** from the server.`);
 		
 	}
 }
