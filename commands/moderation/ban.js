@@ -17,12 +17,12 @@ module.exports = {
 		if(!member.bannable) return message.channel.send('⚠️ • I cannot ban this member.');
 		
 		if(reason.length > 0) {
-			member.ban(reason)
+			member.ban({reason: reason})
 		} else {
 			member.ban()
 		}
 
-		message.channel.send(`✅ • Banned member \`${member.tag}\` from the server.`)
+		message.channel.send(`✅ • Banned member \`${member.user.tag}\` from the server.`)
 		
 	}
 }
