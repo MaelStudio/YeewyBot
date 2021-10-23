@@ -15,13 +15,9 @@ module.exports = {
 
 		if(member.id === message.author.id) return message.channel.send('⚠️ • You cannot ban yourself.');
 		if(!member.bannable) return message.channel.send('⚠️ • I cannot ban this member.');
+		if(member.roles.highest.position > message.member.roles.highest.position) return message.channel.send('⚠️ • You cannot ban this member because their role is higher.');
 		
-		if(reason.length > 0) {
-			member.ban({reason: reason})
-		} else {
-			member.ban()
-		}
-
+		member.ban({reason: reason})
 		message.channel.send(`✅ • Banned member **${member.user.tag}** from the server.`)
 		
 	}
