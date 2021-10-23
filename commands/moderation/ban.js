@@ -10,6 +10,19 @@ module.exports = {
 	execute(message, args) {
 
 		const member = message.mentions.members.first() || message.guild.members.cache.find(m => m == args[0] || m.user.username == args[0] || m.user.tag == args[0] || m.id == args[0]);
+		args.shift();
+		const reason = args.join(' ');
 
+		if(member.id === message.author.id) return message.channel.send('⚠️ • You cannot ban yourself.');
+		if(!member.bannable) return message.channel.send('⚠️ • I cannot ban this member.');
+		
+		if(reason.length > 0) {
+			member.ban(reason)
+		} else {
+			member.ban()
+		}
+
+		message.channel.send(`✅ • Banned member \`${member.tag}\` from the server.`)
+		
 	}
 }
