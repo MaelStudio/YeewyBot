@@ -94,7 +94,7 @@ client.on('messageCreate', async message => {
 		let embed = new Discord.MessageEmbed()
 			.setColor('#ffc9e4')
 			.setTitle(`My prefix in this server is ${prefix}`)
-			.setDescription(`Send ${prefix}help to get the help page.`)
+			.setDescription(`Send \`${prefix}help\` to get the help page.`)
 			.setAuthor(message.author.tag, message.author.avatarURL())
 		message.channel.send({ embeds: [embed] });
 	}
