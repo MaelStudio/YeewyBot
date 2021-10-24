@@ -60,7 +60,7 @@ function isValidArgument(arg, argType, message) {
 
 // ready event
 client.once('ready', async () => {
-	client.user.setPresence({ activities: [{ name: 'Starting up...', type: 'PLAYING' }], status: 'idle' });
+	client.user.setPresence({ activities: [{ name: 'Starting up...', type: 'PLAYING' }], status: 'online' });
 	const guildIds = client.guilds.cache.map(guild => guild.id);
 	const botOwner = client.users.cache.get('579760700700753924');
 
@@ -110,7 +110,7 @@ client.on('messageCreate', async message => {
 
 	// check permission
 	if (command.permission) {
-		const authorPerms = message.channel.p(message.author);
+		const authorPerms = message.channel.permissionsFor(message.author);
 		if (!authorPerms.has(command.permission) && message.author.id !== message.guild.ownerId) {
 			let embed = new Discord.MessageEmbed()
 				.setColor('#ffe900')
