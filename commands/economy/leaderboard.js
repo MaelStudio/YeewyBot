@@ -1,4 +1,4 @@
-const Discord = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const Member = require('../../models/member.js');
 
 module.exports = {
@@ -31,7 +31,7 @@ module.exports = {
 			if (leaderboard[i]['userId'] === message.author.id) yourRank = parseInt(i) + 1;
 		}
 
-		let embed = new Discord.MessageEmbed()
+		let embed = new MessageEmbed()
 			.setColor('#22a7e5')
 			.setTitle(`${message.guild.name} Leaderboard`)
 			.setDescription(lbMessage)

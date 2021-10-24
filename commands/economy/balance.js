@@ -1,4 +1,4 @@
-const Discord = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const database = require('../../functions/database.js');
 
 module.exports = {
@@ -15,7 +15,7 @@ module.exports = {
 		const member = message.mentions.members.first() || message.guild.members.cache.find(m => m == args[0] || m.user.username == args[0] || m.user.tag == args[0] || m.id == args[0]) || message.member;
 		const dbMember = await database.getMember(member);
 
-		let embed = new Discord.MessageEmbed()
+		let embed = new MessageEmbed()
 			.setColor('#ffc700')
 			.setAuthor(member.user.tag, member.user.displayAvatarURL())
 			.addFields(
