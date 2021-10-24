@@ -18,12 +18,22 @@ module.exports = {
 		if (amount < 0) amount *= -1;
 
 		if (amount > dbMember['walletBal']) {
-			message.channel.send(`⚠️ • You do not have that much money to deposit. You currently have \`$${dbMember['walletBal']}\` in your wallet.`);
+			let embed = new MessageEmbed()
+				.setColor('#ef2626')
+				.setTitle('⚠️ • Error')
+				.setDescription(`You do not have that much money to deposit. You currently have \`$${dbMember['walletBal']}\` in your wallet.`)
+				.setAuthor(message.author.tag, message.author.avatarURL())
+			message.channel.send({ embeds: [embed] });
 			return;
 		}
 
 		database.addCoinsToMember(message.member, amount, 'bank');
 		database.addCoinsToMember(message.member, amount * -1, 'wallet');
-		message.channel.send(`✅ • Deposited \`$${amount}\` to your bank!`);
+		let embed = new MessageEmbed()
+				.setColor('#0eea19')
+				.setTitle('✅ • Success')
+				.setDescription(`Deposited \`$${amount}\` to your bank.`)
+				.setAuthor(message.author.tag, message.author.avatarURL())
+		message.channel.send({ embeds: [embed] });
 	}
 }
