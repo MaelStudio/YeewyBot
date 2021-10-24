@@ -167,12 +167,12 @@ client.on('messageCreate', async message => {
 		message.channel.send({ embeds: [embed] });
 
 		// log error
-		let embed = new Discord.MessageEmbed()
+		let logEmbed = new Discord.MessageEmbed()
 			.setTitle('An error occured executing command')
 			.setDescription(`Message sent by **${message.author.tag}** (${message.guild.name}) :\n${message.content}\n\nError:\n\`\`\`js\n${error}\n\`\`\``)
 			.setTimestamp()
 		const logChannel = client.channels.cache.get(config.logChanelId);
-		logChannel.send({ embeds: [embed] })
+		logChannel.send({ embeds: [logEmbed] })
 	}
 
 });
