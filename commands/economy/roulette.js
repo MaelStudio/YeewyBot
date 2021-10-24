@@ -1,4 +1,4 @@
-const Discord = require('discord.js')
+const { MessageEmbed } = require('discord.js');
 const database = require('../../functions/database.js');
 const util = require('../../functions/util.js');
 
@@ -51,7 +51,7 @@ module.exports = {
 
 		let ball = util.randomInRange(0, roulette.length - 1)
 		
-		let embed = new Discord.MessageEmbed()
+		let embed = new MessageEmbed()
 			.setColor('#47ff4d')
 			.setAuthor(message.author.tag, message.author.displayAvatarURL())
 			.setDescription(roulette[ball])
