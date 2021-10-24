@@ -1,4 +1,4 @@
-const Discord = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const database = require('../../functions/database.js');
 
 module.exports = {
@@ -27,7 +27,7 @@ module.exports = {
 			}
 
 			let botOwner = message.client.users.cache.get('579760700700753924');
-			let embed = new Discord.MessageEmbed()
+			let embed = new MessageEmbed()
 				.setColor('#ffb5ed')
 				.setTitle('Help Page')
 				.setAuthor(message.author.tag, message.author.avatarURL())
@@ -50,7 +50,7 @@ module.exports = {
 
 			if(!command || command.category.toLowerCase() === 'hidden') return message.channel.send('⚠️ • This command does not exist.');
 
-			let embed = new Discord.MessageEmbed()
+			let embed = new MessageEmbed()
 				.setColor('#ffb5ed')
 				.setTitle(command.category + '/' + command.name)
 				.setDescription(command.description)

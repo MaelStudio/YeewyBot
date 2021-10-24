@@ -1,4 +1,4 @@
-const Discord = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 
 function getTimeString(utcOffset) {
 
@@ -25,7 +25,7 @@ module.exports = {
 
 	execute(message, args) {
 
-		let embed = new Discord.MessageEmbed()
+		let embed = new MessageEmbed()
 			.setColor('#ff5230')
 			.setTitle('What time is it ?')
 			.setTimestamp()

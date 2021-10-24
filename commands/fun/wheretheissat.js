@@ -1,4 +1,4 @@
-const Discord = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const fetch = require('node-fetch');
 
 module.exports = {
@@ -13,7 +13,7 @@ module.exports = {
 		const url = 'https://api.wheretheiss.at/v1/satellites/25544';
 		const result = await fetch(url);
 		const data = await result.json();
-		const embed = new Discord.MessageEmbed()
+		const embed = new MessageEmbed()
 			.setColor('#62a5f7')
 			.setTitle('Where the ISS at ?')
 			.setURL('https://wheretheiss.at/')

@@ -1,4 +1,3 @@
-const Discord = require('discord.js');
 const mongoose = require('../../functions/database.js');
 
 module.exports = {

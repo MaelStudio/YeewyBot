@@ -1,4 +1,4 @@
-const Discord = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const fetch = require('node-fetch');
 
 module.exports = {
@@ -13,7 +13,7 @@ module.exports = {
 		const url = 'http://api.coindesk.com/v1/bpi/currentprice.json';
 		const result = await fetch(url);
 		const data = await result.json();
-		const embed = new Discord.MessageEmbed()
+		const embed = new MessageEmbed()
 			.setColor('#174da5')
 			.setTitle('Bitcoin Price')
 			.setURL('https://www.coindesk.com/price/bitcoin')
