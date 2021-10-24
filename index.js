@@ -169,7 +169,7 @@ client.on('messageCreate', async message => {
 		// log error
 		let logEmbed = new Discord.MessageEmbed()
 			.setTitle('An error occured executing command')
-			.setDescription(`Message sent by **${message.author.tag}** (${message.guild.name}) :\n${message.content}\n\nError:\n\`\`\`js\n${error}\n\`\`\``)
+			.setDescription(`Message sent by **${message.author.tag}** (${message.guild.name}) :\n${message.content}\n\nError:\n\`\`\`js\n${error.message}\n\`\`\``)
 			.setTimestamp()
 		const logChannel = client.channels.cache.get(config.logChanelId);
 		logChannel.send({ embeds: [logEmbed] })
