@@ -1,4 +1,4 @@
-// const { MessageEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const database = require('../../functions/database.js');
 
 module.exports = {
