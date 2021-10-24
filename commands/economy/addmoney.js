@@ -20,9 +20,19 @@ module.exports = {
 		}
 		database.addCoinsToMember(member, parseInt(args[1]), place);
 		if (args[1] < 0) {
-			message.channel.send(`✅ • Removed \`$${Math.floor(args[1] * -1)}\` from **${member.user.tag}**'s ${place}!`);
+			let embed = new Discord.MessageEmbed()
+				.setColor('#ffe900')
+				.setTitle('✅ • Success')
+				.setDescription(`Removed \`$${Math.floor(args[1] * -1)}\` from **${member.user.tag}**'s ${place}.`)
+				.setAuthor(message.author.tag, message.author.avatarURL())
+			message.channel.send({ embeds: [embed] });
 		} else {
-			message.channel.send(`✅ • Added \`$${Math.floor(args[1])}\` to **${member.user.tag}**'s ${place}!`);
+			let embed = new Discord.MessageEmbed()
+				.setColor('#ffe900')
+				.setTitle('✅ • Success')
+				.setDescription(`Added \`$${Math.floor(args[1])}\` to **${member.user.tag}**'s ${place}.`)
+				.setAuthor(message.author.tag, message.author.avatarURL())
+			message.channel.send({ embeds: [embed] });
 		}
 	}
 }
