@@ -20,7 +20,7 @@ module.exports = {
 
 		if (amount > dbMember['walletBal']) {
 			let embed = new MessageEmbed()
-				.setColor('#ef2626')
+				.setColor('#ff3a3a')
 				.setTitle('⚠️ • Error')
 				.setDescription(`You do not have that much money to give. You currently have \`$${dbMember['walletBal']}\` in your wallet.`)
 				.setAuthor(message.author.tag, message.author.avatarURL())
