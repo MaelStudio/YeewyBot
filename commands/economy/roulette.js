@@ -52,7 +52,7 @@ module.exports = {
 		let ball = util.randomInRange(0, roulette.length - 1)
 		
 		let embed = new Discord.MessageEmbed()
-			.setColor('#2dff34')
+			.setColor('#47ff4d')
 			.setAuthor(message.author.tag, message.author.displayAvatarURL())
 			.setDescription(roulette[ball])
 			.setTimestamp()
