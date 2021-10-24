@@ -11,8 +11,6 @@ module.exports = {
 	image: 'https://image.flaticon.com/icons/png/512/1041/1041728.png',
 
 	async execute(message, args) {
-		// testing
-		console.log(inexistantVariable.qwerty)
 
 		const { commands } = message.client;
 		let commandsList = {};
