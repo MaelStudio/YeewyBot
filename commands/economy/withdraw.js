@@ -1,3 +1,4 @@
+const { MessageEmbed } = require('discord.js');
 const database = require('../../functions/database.js');
 
 module.exports = {
@@ -14,16 +15,29 @@ module.exports = {
 		const dbMember = await database.getMember(message.member);
 
 		let amount = args[0];
-		if (amount.toLowerCase() === 'all') amount = dbMember['bankBal'];
-		if (amount < 0) amount *= -1;
+		if (amount.toLowerCase() === 'all') {
+			amount = dbMember['bankBal'];
+		} else if (amount < 0) {
+			amount *= -1;
+		}
 
 		if (amount > dbMember['bankBal']) {
-			message.channel.send(`⚠️ • You do not have that much money to withdraw. You currently have \`$${dbMember['walletBal']}\` in your bank.`);
+			let embed = new MessageEmbed()
+				.setColor('#ff3a3a')
+				.setTitle('⚠️ • Error')
+				.setDescription(`You do not have that much money to withdraw. You currently have \`$${dbMember['bankBal']}\` in your bank.`)
+				.setAuthor(message.author.tag, message.author.avatarURL())
+			message.channel.send({ embeds: [embed] });
 			return;
 		}
 
 		database.addCoinsToMember(message.member, amount, 'wallet');
 		database.addCoinsToMember(message.member, amount * -1, 'bank');
-		message.channel.send(`✅ • Withdrew \`$${amount}\` from your bank!`);
+		let embed = new MessageEmbed()
+				.setColor('#47ff4d')
+				.setTitle('✅ • Success')
+				.setDescription(`Withdrew \`$${amount}\` from your bank.`)
+				.setAuthor(message.author.tag, message.author.avatarURL())
+		message.channel.send({ embeds: [embed] });
 	}
 }

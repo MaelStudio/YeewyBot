@@ -15,8 +15,11 @@ module.exports = {
 		const dbMember = await database.getMember(message.member);
 
 		let amount = args[0];
-		if (amount.toLowerCase() === 'all') amount = dbMember['walletBal'];
-		if (amount < 0) amount *= -1;
+		if (amount.toLowerCase() === 'all') {
+			amount = dbMember['walletBal'];
+		} else if (amount < 0) {
+			amount *= -1;
+		}
 
 		if (amount > dbMember['walletBal']) {
 			let embed = new MessageEmbed()

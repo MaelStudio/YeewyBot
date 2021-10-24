@@ -1,9 +1,10 @@
+const { MessageEmbed } = require('discord.js');
 const database = require('../../functions/database.js');
 const util = require('../../functions/util.js');
 
 module.exports = {
 	name: 'rob',
-	description: 'Attempt to rob a user\'s wallet (1h coolown)',
+	description: 'Attempt to rob someone\'s wallet (1h coolown)',
 	usage: 'rob [user]',
 	args: [['member'], []],
 	category: 'Economy',
@@ -14,7 +15,12 @@ module.exports = {
 		const member = message.mentions.members.first() || message.guild.members.cache.find(m => m == args[0] || m.user.username == args[0] || m.user.tag == args[0] || m.id == args[0]);
 
 		if (member.id === message.author.id) {
-			message.channel.send('⚠️ • You cannot rob yourself.');
+			let embed = new MessageEmbed()
+				.setColor('#ff3a3a')
+				.setTitle('⚠️ • Error')
+				.setDescription('You cannot rob yourself.')
+				.setAuthor(message.author.tag, message.author.avatarURL())
+			message.channel.send({ embeds: [embed] });
 			return;
 		}
 
@@ -22,11 +28,16 @@ module.exports = {
 		const targetMember = await database.getMember(member);
 
 		if (util.getMinutesSinceEpoch() - dbMember['robbed'] < 60) {
-			message.channel.send(`⏳ • You have already tried to rob someone. Please wait \`${(dbMember['robbed'] - util.getMinutesSinceEpoch()) + 60}\` minutes.`);
+			let embed = new MessageEmbed()
+				.setColor('#99611e')
+				.setTitle('⏳ • Command on cooldown')
+				.setDescription(`You have already tried to rob someone. Please wait \`${(dbMember['robbed'] - util.getMinutesSinceEpoch()) + 60}\` minutes.`)
+				.setAuthor(message.author.tag, message.author.avatarURL())
+			message.channel.send({ embeds: [embed] });
 			return;
 		}
 
-		let percentage = util.randomInRange(20, 50);
+		let percentage = util.randomInRange(10, 50);
 		let amount = 0;
 		if (util.randomInRange(1, 4) === 1) {
 			if (dbMember['walletBal'] + dbMember['bankBal'] > 0) {
@@ -34,7 +45,12 @@ module.exports = {
 			}
 
 			database.addCoinsToMember(message.member, amount * -1, 'wallet');
-			message.channel.send(`✅ • You were caught attempting to rob **${member.user.tag}** and have been fined \`$${amount}\`!`);
+			let embed = new MessageEmbed()
+				.setColor('#ff3a3a')
+				.setTitle('🚔 • Failure')
+				.setDescription(`You were caught attempting to rob **${member.user.tag}** and have been fined \`$${amount}\`.`)
+				.setAuthor(message.author.tag, message.author.avatarURL())
+			message.channel.send({ embeds: [embed] });
 
 		} else {
 			if (targetMember['walletBal'] > 0) {
@@ -43,7 +59,12 @@ module.exports = {
 
 			database.addCoinsToMember(member, amount * -1, 'wallet');
 			database.addCoinsToMember(message.member, amount, 'wallet');
-			message.channel.send(`✅ • You robbed \`$${amount}\` from **${member.user.tag}**!`);
+			let embed = new MessageEmbed()
+				.setColor('#47ff4d')
+				.setTitle('✅ • Success')
+				.setDescription(`You robbed \`$${amount}\` from **${member.user.tag}**.`)
+				.setAuthor(message.author.tag, message.author.avatarURL())
+			message.channel.send({ embeds: [embed] });
 		}
 		database.updateMember(dbMember, { robbed: util.getMinutesSinceEpoch() });
 	}
