@@ -110,7 +110,7 @@ client.on('messageCreate', async message => {
 
 	// check permission
 	if (command.permission) {
-		const authorPerms = message.channel.permissionsFor(message.author);
+		const authorPerms = message.channel.p(message.author);
 		if (!authorPerms.has(command.permission) && message.author.id !== message.guild.ownerId) {
 			let embed = new Discord.MessageEmbed()
 				.setColor('#ffe900')
@@ -154,9 +154,9 @@ client.on('messageCreate', async message => {
 
 	// execute command
 	console.log(`[*] '${command.name}' command used by ${message.author.tag} (${message.guild.name})`);
-	// try {
-	// 	command.execute(message, args);
-	// } catch (error) {
+	try {
+		command.execute(message, args);
+	} catch (error) {
 
 		console.error(error);
 		let embed = new Discord.MessageEmbed()
@@ -173,7 +173,7 @@ client.on('messageCreate', async message => {
 			.setTimestamp()
 		const logChannel = client.channels.cache.get(config.logChanelId);
 		logChannel.send({ embeds: [logEmbed] })
-	// }
+	}
 
 });
 
