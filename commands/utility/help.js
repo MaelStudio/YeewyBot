@@ -28,7 +28,7 @@ module.exports = {
 
 			let botOwner = message.client.users.cache.get('579760700700753924');
 			let embed = new Discord.MessageEmbed()
-				.setColor('#ffc9e4')
+				.setColor('#ffb5ed')
 				.setTitle('Help Page')
 				.setAuthor(message.author.tag, message.author.avatarURL())
 				.setThumbnail('https://media.discordapp.net/attachments/772805402399604756/823642462110220308/yeewy-rainbow.png')
@@ -51,7 +51,7 @@ module.exports = {
 			if(!command || command.category.toLowerCase() === 'hidden') return message.channel.send('⚠️ • This command does not exist.');
 
 			let embed = new Discord.MessageEmbed()
-				.setColor('#ffc9e4')
+				.setColor('#ffb5ed')
 				.setTitle(command.category + '/' + command.name)
 				.setDescription(command.description)
 				.addField('Usage:', '```' + prefix + command.usage + '```', false )

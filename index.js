@@ -92,7 +92,7 @@ client.on('messageCreate', async message => {
 	if (message.author.bot || message.channel.type === 'dm') return;
 	if (message.content === '<@!809060998015090741>') {
 		let embed = new Discord.MessageEmbed()
-			.setColor('#ffc9e4')
+			.setColor('#ffb5ed')
 			.setTitle(`My prefix in this server is ${prefix}`)
 			.setDescription(`Send \`${prefix}help\` to get the help page.`)
 			.setAuthor(message.author.tag, message.author.avatarURL())
