@@ -1,5 +1,6 @@
 module.exports = {
   prefix: 'y.',
+  logChanelId: '808804112572350565',
   token: process.env.token,
   mongodb: process.env.mongodb,
 

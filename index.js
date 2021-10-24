@@ -62,7 +62,7 @@ function isValidArgument(arg, argType, message) {
 client.once('ready', async () => {
 	client.user.setPresence({ activities: [{ name: 'Starting up...', type: 'PLAYING' }], status: 'idle' });
 	const guildIds = client.guilds.cache.map(guild => guild.id);
-	const botOwner = await client.users.fetch('579760700700753924');
+	const botOwner = client.users.cache.get('579760700700753924');
 
 	console.log(`[+] Logged in as ${client.user.tag}`);
 	console.log('——————————————————————————————');
@@ -90,7 +90,15 @@ client.on('messageCreate', async message => {
 	prefix = prefix['prefix'];
 	
 	if (message.author.bot || message.channel.type === 'dm') return;
-	if (message.content === '<@!809060998015090741>') message.channel.send(`**My prefix in this server is \`${prefix}\`**\nSend \`${prefix}help\` to get the help page !`);
+	if (message.content === '<@!809060998015090741>') {
+		let embed = new Discord.MessageEmbed()
+			.setColor('#ffc9e4')
+			.setTitle(`My prefix in this server is ${prefix}`)
+			.setDescription(`Send ${prefix}help to get the help page.`)
+			.setAuthor(message.author.tag, message.author.avatarURL())
+		message.channel.send({ embeds: [embed] });
+	}
+	
 	if (!message.content.startsWith(prefix)) return;
 
 	// commands
@@ -103,8 +111,14 @@ client.on('messageCreate', async message => {
 	// check permission
 	if (command.permission) {
 		const authorPerms = message.channel.permissionsFor(message.author);
-		if (!authorPerms.has(command.permission)) {
-			return message.channel.send(`🚧 • You cannot use this command. Missing permission \`${command.permission}\`.`);
+		if (!authorPerms.has(command.permission) && message.author.id !== message.guild.ownerId) {
+			let embed = new Discord.MessageEmbed()
+				.setColor('#ffe900')
+				.setTitle('🚧 • Missing permission')
+				.setDescription(`You cannot use this command. Missing permission \`${command.permission}\`.`)
+				.setAuthor(message.author.tag, message.author.avatarURL())
+			message.channel.send({ embeds: [embed] });
+			return;
 		}
 	}
 
@@ -127,16 +141,38 @@ client.on('messageCreate', async message => {
 			}
 		}
 
-		if(!goodUsage) return message.channel.send(`📎 • Wrong command usage: \`${prefix + command.usage}\``);
+		if(!goodUsage) {
+			let embed = new Discord.MessageEmbed()
+				.setColor('#666768')
+				.setTitle('📎 • Wrong command usage')
+				.setDescription(`Invalid arguments specified: \`${prefix + command.usage}\``)
+				.setAuthor(message.author.tag, message.author.avatarURL())
+			message.channel.send({ embeds: [embed] });
+			return;
+		}
 	}
 
 	// execute command
+	console.log(`[*] '${command.name}' command used by ${message.author.tag} (${message.guild.name})`);
 	try {
-		console.log(`[*] '${command.name}' command used by ${message.author.tag} (${message.guild.name})`);
 		command.execute(message, args);
 	} catch (error) {
+
 		console.error(error);
-		message.channel.send('✂️ • An error occured trying to execute the command.');
+		let embed = new Discord.MessageEmbed()
+				.setColor('#ff2a00')
+				.setTitle('✂️ • Code error')
+				.setDescription('Sorry, an error occured trying to execute the command. The bot owner has been warned.')
+				.setAuthor(message.author.tag, message.author.avatarURL())
+		message.channel.send({ embeds: [embed] });
+
+		// log error
+		let embed = new Discord.MessageEmbed()
+			.setTitle('An error occured executing command')
+			.setDescription(`Message sent by **${message.author.tag}** (${message.guild.name}) :\n${message.content}\n\nError:\n\`\`\`js\n${error}\n\`\`\``)
+			.setTimestamp()
+		const logChannel = client.channels.cache.get(config.logChanelId);
+		logChannel.send({ embeds: [embed] })
 	}
 
 });

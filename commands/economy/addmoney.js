@@ -20,7 +20,7 @@ module.exports = {
 		}
 		database.addCoinsToMember(member, parseInt(args[1]), place);
 		if (args[1] < 0) {
-			message.channel.send(`✅ • Removed \`$${Math.floor(args[1] * -1)}\` to **${member.user.tag}**'s ${place}!`);
+			message.channel.send(`✅ • Removed \`$${Math.floor(args[1] * -1)}\` from **${member.user.tag}**'s ${place}!`);
 		} else {
 			message.channel.send(`✅ • Added \`$${Math.floor(args[1])}\` to **${member.user.tag}**'s ${place}!`);
 		}
