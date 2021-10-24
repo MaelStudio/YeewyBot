@@ -52,7 +52,7 @@ module.exports = {
 		let ball = util.randomInRange(0, roulette.length - 1)
 		
 		let embed = new Discord.MessageEmbed()
-			.setColor('#0eea19')
+			.setColor('#2dff34')
 			.setAuthor(message.author.tag, message.author.displayAvatarURL())
 			.setDescription(roulette[ball])
 			.setTimestamp()
@@ -66,7 +66,7 @@ module.exports = {
 			database.addCoinsToMember(message.member, amount, 'wallet');
 		} else {
 			embed.setDescription(embed.description + `\n\nThe ball landed on **${color}**.\nYou lost!`);
-			embed.setColor('#ef2626')
+			embed.setColor('#ff3a3a')
 			database.addCoinsToMember(message.member, amount * -1, 'wallet');
 		}
 		message.channel.send({ embeds: [embed] });

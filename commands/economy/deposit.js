@@ -31,7 +31,7 @@ module.exports = {
 		database.addCoinsToMember(message.member, amount, 'bank');
 		database.addCoinsToMember(message.member, amount * -1, 'wallet');
 		let embed = new MessageEmbed()
-				.setColor('#0eea19')
+				.setColor('#2dff34')
 				.setTitle('✅ • Success')
 				.setDescription(`Deposited \`$${amount}\` to your bank.`)
 				.setAuthor(message.author.tag, message.author.avatarURL())
