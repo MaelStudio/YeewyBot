@@ -1,3 +1,5 @@
+const { MessageEmbed } = require('discord.js');
+
 module.exports = {
 	name: 'ping',
 	description: 'Get my response time.',
@@ -7,6 +9,11 @@ module.exports = {
 
 	async execute(message, args) {
 		let msg = await message.channel.send('Pinging...');
-		await msg.edit(`🏓 • **Pong !** \`${Date.now() - msg.createdTimestamp} ms\``);
+		let embed = new MessageEmbed()
+			.setColor('#3fdfff')
+			.setTitle(`🏓 • Pong`)
+			.setDescription(`Response time: \`${Date.now() - msg.createdTimestamp} ms.`)
+			.setAuthor(message.author.tag, message.author.avatarURL())
+		await msg.edit({ embeds: [embed] });
 	}
 }

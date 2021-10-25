@@ -1,3 +1,5 @@
+const { MessageEmbed } = require('discord.js');
+
 module.exports = {
 	name: 'ban',
 	description: 'Ban a member from the server.',
@@ -13,12 +15,41 @@ module.exports = {
 		args.shift();
 		const reason = args.join(' ');
 
-		if(member.id === message.author.id) return message.channel.send('⚠️ • You cannot ban yourself.');
-		if(!member.bannable) return message.channel.send('⚠️ • I cannot ban this member.');
-		if(member.roles.highest.position > message.member.roles.highest.position) return message.channel.send('⚠️ • You cannot ban this member because their role is higher.');
+		if(member.id === message.author.id) {
+			let embed = new MessageEmbed()
+				.setColor('#ff3a3a')
+				.setTitle('⚠️ • Error')
+				.setDescription('You cannot ban yourself.')
+				.setAuthor(message.author.tag, message.author.avatarURL())
+			message.channel.send({ embeds: [embed] });
+			return;
+		}
+		if(!member.bannable) {
+			let embed = new MessageEmbed()
+				.setColor('#ff3a3a')
+				.setTitle('⚠️ • Error')
+				.setDescription('I cannot ban this member.')
+				.setAuthor(message.author.tag, message.author.avatarURL())
+			message.channel.send({ embeds: [embed] });
+			return;
+		}
+		if(member.roles.highest.position > message.member.roles.highest.position) {
+			let embed = new MessageEmbed()
+				.setColor('#ff3a3a')
+				.setTitle('⚠️ • Error')
+				.setDescription('You cannot ban this member because their role is higher.')
+				.setAuthor(message.author.tag, message.author.avatarURL())
+			message.channel.send({ embeds: [embed] });
+			return;
+		}
 		
 		member.ban({reason: reason});
-		message.channel.send(`✅ • Banned member **${member.user.tag}** from the server.`);
-		
+		let embed = new MessageEmbed()
+				.setColor('#47ff4d')
+				.setTitle('✅ • Success')
+				.setDescription(`Banned member **${member.user.tag}** from the server.`)
+				.setAuthor(message.author.tag, message.author.avatarURL())
+		message.channel.send({ embeds: [embed] });
+
 	}
 }

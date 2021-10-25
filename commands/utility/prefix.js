@@ -1,3 +1,4 @@
+const { MessageEmbed } = require('discord.js');
 const mongoose = require('../../functions/database.js');
 
 module.exports = {
@@ -13,9 +14,22 @@ module.exports = {
 	execute(message, args) {
 
 		const prefix = args[0];
-		if(prefix.length > 5) return message.channel.send('⚠️ • The prefix can\'t be more than 5 characters long.');
+		if(prefix.length > 5) {
+			let embed = new MessageEmbed()
+				.setColor('#ff3a3a')
+				.setTitle('⚠️ • Error')
+				.setDescription('The prefix can\'t be more than 5 characters long.')
+				.setAuthor(message.author.tag, message.author.avatarURL())
+			message.channel.send({ embeds: [embed] });
+			return;
+		}
 		mongoose.updateGuild(message.guild, { prefix: prefix });
-		message.channel.send(`✅ • Set the server's prefix to \`${prefix}\`.`);
+		let embed = new MessageEmbed()
+				.setColor('#47ff4d')
+				.setTitle('✅ • Success')
+				.setDescription(`Set the server's prefix to \`${prefix}\`.`)
+				.setAuthor(message.author.tag, message.author.avatarURL())
+		message.channel.send({ embeds: [embed] });
 		
 	}
 }

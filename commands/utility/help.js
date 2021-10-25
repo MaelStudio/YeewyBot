@@ -48,7 +48,15 @@ module.exports = {
 			const name = args[0].toLowerCase();
 			let command = commands.get(name) || commands.find(cmd => cmd.aliases && cmd.aliases.includes(name));
 
-			if(!command || command.category.toLowerCase() === 'hidden') return message.channel.send('⚠️ • This command does not exist.');
+			if(!command || command.category.toLowerCase() === 'hidden') {
+				let embed = new MessageEmbed()
+					.setColor('#ff3a3a')
+					.setTitle('⚠️ • Error')
+					.setDescription('This command does not exist.')
+					.setAuthor(message.author.tag, message.author.avatarURL())
+				message.channel.send({ embeds: [embed] });
+				return;
+			}
 
 			let embed = new MessageEmbed()
 				.setColor('#ffb5ed')
