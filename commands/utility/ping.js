@@ -8,12 +8,15 @@ module.exports = {
 	image: 'https://image.flaticon.com/icons/png/512/140/140412.png',
 
 	async execute(message, args) {
-		let msg = await message.channel.send('Pinging...');
-		let embed = new MessageEmbed()
+		let embed1 = new MessageEmbed()
+			.setColor('#3fdfff')
+			.setTitle(`Pinging...`)
+		let msg = await message.channel.send(embed1);
+		let embed2 = new MessageEmbed()
 			.setColor('#3fdfff')
 			.setTitle(`🏓 • Pong`)
 			.setDescription(`Response time: \`${Date.now() - msg.createdTimestamp}\` ms.`)
 			.setAuthor(message.author.tag, message.author.avatarURL())
-		await msg.edit({ content: '', embeds: [embed] });
+		await msg.edit({ embeds: [embed2] });
 	}
 }
