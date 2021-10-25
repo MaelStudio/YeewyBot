@@ -12,8 +12,8 @@ module.exports = {
 		let embed = new MessageEmbed()
 			.setColor('#3fdfff')
 			.setTitle(`🏓 • Pong`)
-			.setDescription(`Response time: \`${Date.now() - msg.createdTimestamp} ms.`)
+			.setDescription(`Response time: \`${Date.now() - msg.createdTimestamp}\` ms.`)
 			.setAuthor(message.author.tag, message.author.avatarURL())
-		await msg.edit({ embeds: [embed] });
+		await msg.edit({ content: '', embeds: [embed] });
 	}
 }
