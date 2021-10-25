@@ -11,7 +11,7 @@ module.exports = {
 		let embed1 = new MessageEmbed()
 			.setColor('#3fdfff')
 			.setTitle(`Pinging...`)
-		let msg = await message.channel.send(embed1);
+		let msg = await message.channel.send({ embeds: [embed1] });
 		let embed2 = new MessageEmbed()
 			.setColor('#3fdfff')
 			.setTitle(`🏓 • Pong`)
