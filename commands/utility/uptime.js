@@ -10,12 +10,12 @@ module.exports = {
 	execute(message, args) {
 		let embed = new MessageEmbed()
 			.setColor('#5ef263')
-			.setTitle('Uptime')
+			.setTitle('⏱️ • Uptime')
 			.setTimestamp()
 		
 		let uptime = Math.round(message.client.uptime/1000/60/6)/10
-		if(uptime > 0) embed.setDescription(`⏱️ • I have been running for \`${uptime}h\`.`);
-		else embed.setDescription(`⏱️ • I just started up !`);
+		if(uptime > 0) embed.setDescription(`I have been running for \`${uptime}h\`.`);
+		else embed.setDescription(`I just started up.`);
 		
 		message.channel.send({ embeds: [embed] });
 	}
