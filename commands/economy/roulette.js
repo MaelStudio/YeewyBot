@@ -40,12 +40,22 @@ module.exports = {
 		if (amount < 0) amount *= -1;
 
 		if (amount > dbMember['walletBal']) {
-			message.channel.send(`⚠️ • You do not have enough money for this bet. You currently have \`$${dbMember['walletBal']}\` in your wallet.`);
+			let embed = new MessageEmbed()
+				.setColor('#ff3a3a')
+				.setTitle('⚠️ • Error')
+				.setDescription(`You do not have enough money for this bet. You currently have \`$${dbMember['walletBal']}\` in your wallet.`)
+				.setAuthor(message.author.tag, message.author.avatarURL())
+			message.channel.send({ embeds: [embed] });
 			return;
 		}
 
 		if (util.getSecondsSinceEpoch() - dbMember['roulette'] < 10) {
-			message.channel.send(`⏳ • You already played the roulette. Please wait \`${dbMember['roulette'] - util.getSecondsSinceEpoch() + 10}\` seconds.`);
+			let embed = new MessageEmbed()
+				.setColor('#99611e')
+				.setTitle('⏳ • Command on cooldown')
+				.setDescription(`You already played the roulette. Please wait \`${dbMember['roulette'] - util.getSecondsSinceEpoch() + 10}\` seconds.`)
+				.setAuthor(message.author.tag, message.author.avatarURL())
+			message.channel.send({ embeds: [embed] });
 			return;
 		}
 
