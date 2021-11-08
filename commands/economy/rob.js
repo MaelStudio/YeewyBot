@@ -4,17 +4,17 @@ const util = require('../../functions/util.js');
 
 module.exports = {
 	name: 'rob',
-	description: 'Attempt to rob someone\'s wallet (1h coolown)',
-	usage: 'rob [user]',
+	description: 'Attempt to rob a member\'s wallet (1h coolown)',
+	usage: 'rob [member]',
 	args: [['member'], []],
 	category: 'Economy',
 	image: 'https://image.flaticon.com/icons/png/512/1576/1576476.png',
 
 	async execute(message, args) {
 		
-		const member = message.mentions.members.first() || message.guild.members.cache.find(m => m == args[0] || m.user.username == args[0] || m.user.tag == args[0] || m.id == args[0]);
+		const target = message.mentions.members.first() || message.guild.members.cache.find(m => m == args[0] || m.user.username == args[0] || m.user.tag == args[0] || m.id == args[0]);
 
-		if (member.id === message.author.id) {
+		if (target.id === message.author.id) {
 			let embed = new MessageEmbed()
 				.setColor('#ff3a3a')
 				.setTitle('⚠️ • Error')
@@ -25,7 +25,7 @@ module.exports = {
 		}
 
 		const dbMember = await database.getMember(message.member);
-		const targetMember = await database.getMember(member);
+		const dbTarget = await database.getMember(target);
 
 		if (util.getMinutesSinceEpoch() - dbMember['robbed'] < 60) {
 			let embed = new MessageEmbed()
@@ -48,21 +48,21 @@ module.exports = {
 			let embed = new MessageEmbed()
 				.setColor('#ff3a3a')
 				.setTitle('🚔 • Failure')
-				.setDescription(`You were caught attempting to rob **${member.user.tag}** and have been fined \`$${amount}\`.`)
+				.setDescription(`You were caught attempting to rob **${target.user.tag}** and have been fined \`$${amount}\`.`)
 				.setAuthor(message.author.tag, message.author.avatarURL())
 			message.channel.send({ embeds: [embed] });
 
 		} else {
-			if (targetMember['walletBal'] > 0) {
-				amount = Math.floor(targetMember['walletBal'] * percentage / 100);
+			if (dbTarget['walletBal'] > 0) {
+				amount = Math.floor(dbTarget['walletBal'] * percentage / 100);
 			}
 
-			database.addCoinsToMember(member, amount * -1, 'wallet');
+			database.addCoinsToMember(target, amount * -1, 'wallet');
 			database.addCoinsToMember(message.member, amount, 'wallet');
 			let embed = new MessageEmbed()
 				.setColor('#47ff4d')
 				.setTitle('✅ • Success')
-				.setDescription(`You robbed \`$${amount}\` from **${member.user.tag}**.`)
+				.setDescription(`You robbed \`$${amount}\` from **${target.user.tag}**.`)
 				.setAuthor(message.author.tag, message.author.avatarURL())
 			message.channel.send({ embeds: [embed] });
 		}

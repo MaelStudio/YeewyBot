@@ -3,15 +3,15 @@ const database = require('../../functions/database.js');
 
 module.exports = {
 	name: 'pay',
-	description: 'Give money to a user',
-	usage: 'pay [user] [amount | all]',
+	description: 'Give money to a member',
+	usage: 'pay [member] [amount | all]',
 	args: [['member', 'numberall'], []],
 	category: 'Economy',
 	image: 'https://image.flaticon.com/icons/png/512/3081/3081315.png',
 
 	async execute(message, args) {
 
-		const member = message.mentions.members.first() || message.guild.members.cache.find(m => m == args[0] || m.user.username == args[0] || m.user.tag == args[0] || m.id == args[0]);
+		const target = message.mentions.members.first() || message.guild.members.cache.find(m => m == args[0] || m.user.username == args[0] || m.user.tag == args[0] || m.id == args[0]);
 		const dbMember = await database.getMember(message.member);
 
 		var amount = args[1];
@@ -29,11 +29,11 @@ module.exports = {
 		}
 
 		database.addCoinsToMember(message.member, amount * -1, 'wallet');
-		database.addCoinsToMember(member, amount, 'wallet');
+		database.addCoinsToMember(target, amount, 'wallet');
 		let embed = new MessageEmbed()
 				.setColor('#47ff4d')
 				.setTitle('✅ • Success')
-				.setDescription(`**${member.user.tag}** has received your \`$${amount}\``)
+				.setDescription(`**${target.user.tag}** has received your \`$${amount}\``)
 				.setAuthor(message.author.tag, message.author.avatarURL())
 		message.channel.send({ embeds: [embed] });
 	}

@@ -3,8 +3,8 @@ const database = require('../../functions/database.js');
 
 module.exports = {
 	name: 'balance',
-	description: 'Get your or another user\'s balance',
-	usage: 'balance <user>',
+	description: 'Get your balance or another member\'s balance',
+	usage: 'balance <member>',
 	args: [[], ['member']],
 	aliases: ['bal', 'money'],
 	category: 'Economy',
@@ -12,16 +12,16 @@ module.exports = {
 
 	async execute(message, args) {
 
-		const member = message.mentions.members.first() || message.guild.members.cache.find(m => m == args[0] || m.user.username == args[0] || m.user.tag == args[0] || m.id == args[0]) || message.member;
-		const dbMember = await database.getMember(member);
+		const target = message.mentions.members.first() || message.guild.members.cache.find(m => m == args[0] || m.user.username == args[0] || m.user.tag == args[0] || m.id == args[0]) || message.member;
+		const dbTarget = await database.getMember(target);
 
 		let embed = new MessageEmbed()
 			.setColor('#ffc700')
-			.setAuthor(member.user.tag, member.user.displayAvatarURL())
+			.setAuthor(target.user.tag, target.user.displayAvatarURL())
 			.addFields(
-				{ name: ':purse: Wallet', value: (`\`$${dbMember['walletBal']}\``), inline: true },
-				{ name: ':bank: Bank', value: (`\`$${dbMember['bankBal']}\``), inline: true },
-				{ name: ':dollar: Balance', value: `\`$${dbMember['bankBal'] + dbMember['walletBal']}\``, inline: true }
+				{ name: ':purse: Wallet', value: (`\`$${dbTarget['walletBal']}\``), inline: true },
+				{ name: ':bank: Bank', value: (`\`$${dbTarget['bankBal']}\``), inline: true },
+				{ name: ':dollar: Balance', value: `\`$${dbTarget['bankBal'] + dbTarget['walletBal']}\``, inline: true }
 			)
 			.setTimestamp()
 		message.channel.send({ embeds: [embed] });

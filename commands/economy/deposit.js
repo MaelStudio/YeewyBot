@@ -3,7 +3,7 @@ const database = require('../../functions/database.js');
 
 module.exports = {
 	name: 'deposit',
-	description: 'Deposit money to the bank',
+	description: 'Deposit money to your bank',
 	usage: 'deposit [amount | all]',
 	args: [['numberall'], []],
 	aliases: ['dep'],
