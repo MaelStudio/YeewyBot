@@ -11,11 +11,11 @@ module.exports = {
 
 	execute(message, args) {
 
-		const member = message.mentions.members.first() || message.guild.members.cache.find(m => m == args[0] || m.user.username == args[0] || m.user.tag == args[0] || m.id == args[0]);
+		const target = message.mentions.members.first() || message.guild.members.cache.find(m => m == args[0] || m.user.username == args[0] || m.user.tag == args[0] || m.id == args[0]);
 		args.shift();
 		const reason = args.join(' ');
 
-		if(member.id === message.author.id) {
+		if(target.id === message.author.id) {
 			let embed = new MessageEmbed()
 				.setColor('#ff3a3a')
 				.setTitle('⚠️ • Error')
@@ -24,7 +24,7 @@ module.exports = {
 			message.channel.send({ embeds: [embed] });
 			return;
 		}
-		if(!member.bannable) {
+		if(!target.bannable) {
 			let embed = new MessageEmbed()
 				.setColor('#ff3a3a')
 				.setTitle('⚠️ • Error')
@@ -33,7 +33,7 @@ module.exports = {
 			message.channel.send({ embeds: [embed] });
 			return;
 		}
-		if(member.roles.highest.position > message.member.roles.highest.position) {
+		if(target.roles.highest.position > message.member.roles.highest.position) {
 			let embed = new MessageEmbed()
 				.setColor('#ff3a3a')
 				.setTitle('⚠️ • Error')
@@ -43,11 +43,11 @@ module.exports = {
 			return;
 		}
 		
-		member.ban({reason: reason});
+		target.ban({reason: reason});
 		let embed = new MessageEmbed()
 				.setColor('#47ff4d')
 				.setTitle('✅ • Success')
-				.setDescription(`Banned member **${member.user.tag}** from the server.`)
+				.setDescription(`Banned member **${target.user.tag}** from the server.`)
 				.setAuthor(message.author.tag, message.author.avatarURL())
 		message.channel.send({ embeds: [embed] });
 
