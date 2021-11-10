@@ -94,7 +94,7 @@ client.on('messageCreate', async message => {
 		let embed = new Discord.MessageEmbed()
 			.setColor('#ffb5ed')
 			.setTitle(`My prefix in this server is ${prefix}`)
-			.setDescription(`Send \`${prefix}help\` to get the help page.`)
+			.setDescription(`Use \`${prefix}help\` to get the help page.`)
 			.setAuthor(message.author.tag, message.author.avatarURL())
 		message.channel.send({ embeds: [embed] });
 	}
@@ -128,7 +128,7 @@ client.on('messageCreate', async message => {
 		let goodUsage = true;
 		
 		// correct amount of arguments
-		if (args.required && args.length < command.args.required.length) {
+		if (command.args.required && args.length < command.args.required.length) {
 			goodUsage = false;
 		} else {
 			// required arguments
