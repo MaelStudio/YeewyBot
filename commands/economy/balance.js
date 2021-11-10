@@ -5,7 +5,7 @@ module.exports = {
 	name: 'balance',
 	description: 'Get your balance or another member\'s balance',
 	usage: 'balance <member>',
-	args: [[], ['member']],
+	args: { optional: ['member'] },
 	aliases: ['bal', 'money'],
 	category: 'Economy',
 	image: 'https://image.flaticon.com/icons/png/512/845/845752.png',

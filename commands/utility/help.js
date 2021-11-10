@@ -5,7 +5,7 @@ module.exports = {
 	name: 'help',
 	description: 'Get a list of all commands or info about a specific command.',
 	usage: 'help <command>',
-	args: [[], ['command']],
+	args: { required: ['command'] },
 	aliases: ['commands'],
 	category: 'Utility',
 	image: 'https://image.flaticon.com/icons/png/512/1041/1041728.png',

@@ -128,16 +128,21 @@ client.on('messageCreate', async message => {
 		let goodUsage = true;
 		
 		// correct amount of arguments
-		if(args.length < command.args[0].length) {
+		if(args.length < command.args.required.length) {
 			goodUsage = false;
 		} else {
 			// required arguments
-			for(let i=0; i<command.args[0].length; i++) {
-				if(!isValidArgument(args[i], command.args[0][i], message)) goodUsage = false;
+			if (command.args.required) {
+				for(let i=0; i<command.args.required.length; i++) {
+					if(!isValidArgument(args[i], command.args.required[i], message)) goodUsage = false;
+				}
 			}
+			
 			// optional arguments
-			for(let i=0; i<command.args[1].length; i++) {
-				if(args.length > (command.args[0].length + i) && !isValidArgument(args[i], command.args[1][i], message)) goodUsage = false;
+			if (command.args.optional) {
+				for(let i=0; i<command.args.optional.length; i++) {
+					if(!isValidArgument(args[i], command.args.optional[i], message)) goodUsage = false;
+				}
 			}
 		}
 
@@ -150,6 +155,26 @@ client.on('messageCreate', async message => {
 			message.channel.send({ embeds: [embed] });
 			return;
 		}
+	}
+
+	// check cooldown:
+	if(command.cooldown) {
+
+		const time = [
+			{
+				unit: 's',
+				ms: 1000
+			},
+			{
+				unit: 'm',
+				ms: 1000*60
+			},
+			{
+				unit: 'h',
+				ms: 1000*60*60
+			}
+		]
+
 	}
 
 	// execute command

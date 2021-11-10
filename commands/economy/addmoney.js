@@ -5,7 +5,7 @@ module.exports = {
 	name: 'addmoney',
 	description: 'Add money to a member\'s balance.',
 	usage: 'addmoney [member] [amount] <bank | wallet>',
-	args: [['member', 'number'], ['text']],
+	args: { required: ['member', 'number'], optional: ['text'] },
 	aliases: ['add-money'],
 	permission: 'ADMINISTRATOR',
 	category: 'Economy',

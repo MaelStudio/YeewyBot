@@ -5,7 +5,7 @@ module.exports = {
 	name: 'withdraw',
 	description: 'Withdraw money from your bank',
 	usage: 'withdraw [amount | all]',
-	args: [['numberall'], []],
+	args: { required: ['numberall'] },
 	aliases: ['with'],
 	category: 'Economy',
 	image: 'https://image.flaticon.com/icons/png/512/214/214362.png',

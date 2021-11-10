@@ -4,7 +4,7 @@ module.exports = {
 	name: 'kick',
 	description: 'Kick a member from the server.',
 	usage: 'kick [member] <reason>',
-	args: [['member'], ['text']],
+	args: { required: ['member'], optional: ['text'] },
 	permission: 'KICK_MEMBERS',
 	category: 'Moderation',
 	image: 'https://image.flaticon.com/icons/png/512/4584/4584372.png',

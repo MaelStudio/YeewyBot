@@ -5,7 +5,7 @@ module.exports = {
 	name: 'pay',
 	description: 'Give money to a member',
 	usage: 'pay [member] [amount | all]',
-	args: [['member', 'numberall'], []],
+	args: { required: ['member', 'numberall'] },
 	category: 'Economy',
 	image: 'https://image.flaticon.com/icons/png/512/3081/3081315.png',
 

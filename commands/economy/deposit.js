@@ -5,7 +5,7 @@ module.exports = {
 	name: 'deposit',
 	description: 'Deposit money to your bank',
 	usage: 'deposit [amount | all]',
-	args: [['numberall'], []],
+	args: { required: ['numberall'] },
 	aliases: ['dep'],
 	category: 'Economy',
 	image: 'https://image.flaticon.com/icons/png/512/3190/3190454.png',

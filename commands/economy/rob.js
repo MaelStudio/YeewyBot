@@ -6,7 +6,8 @@ module.exports = {
 	name: 'rob',
 	description: 'Attempt to rob a member\'s wallet (1h coolown)',
 	usage: 'rob [member]',
-	args: [['member'], []],
+	args: { required: ['member'] },
+	cooldown: { unit: 'm', amount: 60 },
 	category: 'Economy',
 	image: 'https://image.flaticon.com/icons/png/512/1576/1576476.png',
 

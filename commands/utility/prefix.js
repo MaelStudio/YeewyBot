@@ -5,7 +5,7 @@ module.exports = {
 	name: 'prefix',
 	description: 'Change my prefix in your server.',
 	usage: 'prefix [new-prefix]',
-	args: [['prefix'], []],
+	args: { required: ['prefix'] },
 	aliases: ['setprefix'],
 	permission: 'ADMINISTRATOR',
 	category: 'Utility',

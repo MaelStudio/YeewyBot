@@ -4,7 +4,7 @@ module.exports = {
 	name: 'ban',
 	description: 'Ban a member from the server.',
 	usage: 'ban [member] <reason>',
-	args: [['member'], ['text']],
+	args: { required: ['member'], optional: ['text'] },
 	permission: 'BAN_MEMBERS',
 	category: 'Moderation',
 	image: 'https://image.flaticon.com/icons/png/512/3477/premium/3477073.png',
