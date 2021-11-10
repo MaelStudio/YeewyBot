@@ -142,8 +142,8 @@ client.on('messageCreate', async message => {
 			if (command.args.optional) {
 				for(let i=0; i<command.args.optional.length; i++) {
 
-					let arg = args[i]
-					if (command.args.required) arg = args[i + command.args.required.length]
+					let arg = args[i];
+					if (command.args.required) arg = args[i + command.args.required.length];
 
 					if (!arg) break;
 					if (!isValidArgument(arg, command.args.optional[i], message)) goodUsage = false;
