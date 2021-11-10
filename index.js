@@ -123,12 +123,12 @@ client.on('messageCreate', async message => {
 	}
 
 	// check args
-	if(command.args) {
+	if (command.args) {
 
 		let goodUsage = true;
 		
 		// correct amount of arguments
-		if(args.length < command.args.required.length) {
+		if (args.required && args.length < command.args.required.length) {
 			goodUsage = false;
 		} else {
 			// required arguments
@@ -158,7 +158,7 @@ client.on('messageCreate', async message => {
 	}
 
 	// check cooldown:
-	if(command.cooldown) {
+	if (command.cooldown) {
 
 		const time = [
 			{
