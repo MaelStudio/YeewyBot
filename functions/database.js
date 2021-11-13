@@ -25,7 +25,7 @@ async function getMember(member) {
 			guildId: member.guild.id,
 			walletBal: 0,
 			bankBal: 0,
-			cooldowns: {}
+			cooldowns: { test: 'aaa' }
 		});
 		const dbMember = await newMember.save();
 		console.log(`[^] Saved member ${member.user.tag} (${member.guild.name}) to the database`);
