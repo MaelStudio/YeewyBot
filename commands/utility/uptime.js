@@ -14,7 +14,7 @@ module.exports = {
 			.setTimestamp()
 		
 		let uptime = Math.round(message.client.uptime/1000/60/6)/10
-		if(uptime > 0) embed.setDescription(`I have been running for \`${uptime}h\`.`);
+		if(uptime > 0) embed.setDescription(`I have been running for \`${uptime} h\`.`);
 		else embed.setDescription(`I just started up.`);
 		
 		message.channel.send({ embeds: [embed] });
