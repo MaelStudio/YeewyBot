@@ -7,7 +7,7 @@ const memberSchema = new Schema({
   walletBal: Number,
   bankBal: Number,
   cooldowns: Object
-}, { timestamps: true });
+}, { timestamps: true, minimize: false });
 
 const Member = mongoose.model('Member', memberSchema);
 module.exports = Member;
