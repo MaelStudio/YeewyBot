@@ -50,16 +50,6 @@ module.exports = {
 			return;
 		}
 
-		if (util.getSecondsSinceEpoch() - dbMember['roulette'] < 10) {
-			let embed = new MessageEmbed()
-				.setColor('#99611e')
-				.setTitle('⏳ • Command on cooldown')
-				.setDescription(`You already played the roulette. Please wait \`${dbMember['roulette'] - util.getSecondsSinceEpoch() + 10}\` seconds.`)
-				.setAuthor(message.author.tag, message.author.avatarURL())
-			message.channel.send({ embeds: [embed] });
-			return;
-		}
-
 		let ball = util.randomInRange(0, roulette.length - 1)
 		
 		let embed = new MessageEmbed()
@@ -81,6 +71,5 @@ module.exports = {
 			database.addCoinsToMember(message.member, amount * -1, 'wallet');
 		}
 		message.channel.send({ embeds: [embed] });
-		database.updateMember(dbMember, { roulette: util.getSecondsSinceEpoch() });
 	}
 }

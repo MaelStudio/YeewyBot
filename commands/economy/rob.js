@@ -28,16 +28,6 @@ module.exports = {
 		const dbMember = await database.getMember(message.member);
 		const dbTarget = await database.getMember(target);
 
-		if (util.getMinutesSinceEpoch() - dbMember['robbed'] < 60) {
-			let embed = new MessageEmbed()
-				.setColor('#99611e')
-				.setTitle('⏳ • Command on cooldown')
-				.setDescription(`You have already tried to rob someone. Please wait \`${(dbMember['robbed'] - util.getMinutesSinceEpoch()) + 60}\` minutes.`)
-				.setAuthor(message.author.tag, message.author.avatarURL())
-			message.channel.send({ embeds: [embed] });
-			return;
-		}
-
 		let percentage = util.randomInRange(10, 50);
 		let amount = 0;
 		if (util.randomInRange(1, 4) === 1) {
@@ -67,6 +57,5 @@ module.exports = {
 				.setAuthor(message.author.tag, message.author.avatarURL())
 			message.channel.send({ embeds: [embed] });
 		}
-		database.updateMember(dbMember, { robbed: util.getMinutesSinceEpoch() });
 	}
 }
