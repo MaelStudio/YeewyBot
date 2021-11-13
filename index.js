@@ -171,7 +171,7 @@ client.on('messageCreate', async message => {
 		const lastUsed = dbMember.cooldowns[command.name];
 
 		if (lastUsed && Date.now() - lastUsed < cooldown) {
-			let embed = new MessageEmbed()
+			let embed = new Discord.MessageEmbed()
 				.setColor('#99611e')
 				.setTitle('⏳ • Command on cooldown')
 				.setDescription(`The \`${command.name}\` command is on cooldown. Please wait \`${(lastUsed - Date.now() + cooldown) / util.toMs[command.cooldown.unit]}${command.cooldown.unit}\`.`)
