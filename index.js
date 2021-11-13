@@ -163,24 +163,22 @@ client.on('messageCreate', async message => {
 		}
 	}
 
-	// check cooldown:
+	// check cooldown
 	if (command.cooldown) {
 
-		const time = [
-			{
-				unit: 's',
-				ms: 1000
-			},
-			{
-				unit: 'm',
-				ms: 1000*60
-			},
-			{
-				unit: 'h',
-				ms: 1000*60*60
-			}
-		]
+		const cooldown = command.cooldown.amount * util.toMs[command.cooldown.unit];
+		const dbMember = await database.getMember(message.member);
+		const lastUsed = dbMember.cooldowns[command.name];
 
+		if (lastUsed && Date.now() - lastUsed < cooldown) {
+			let embed = new MessageEmbed()
+				.setColor('#99611e')
+				.setTitle('⏳ • Command on cooldown')
+				.setDescription(`The \`${command.name}\` command is on cooldown. Please wait \`${(lastUsed - Date.now() + cooldown) / util.toMs[command.cooldown.unit]}${command.cooldown.unit}\`.`)
+				.setAuthor(message.author.tag, message.author.avatarURL())
+			message.channel.send({ embeds: [embed] });
+			return;
+		}
 	}
 
 	// execute command
@@ -204,6 +202,15 @@ client.on('messageCreate', async message => {
 			.setTimestamp()
 		const logChannel = client.channels.cache.get(config.logChanelId);
 		logChannel.send({ embeds: [logEmbed] })
+	}
+	
+	// set command on cooldown
+	if (command.cooldown) {
+
+		const dbMember = await database.getMember(message.member);
+		dbMember.cooldowns[command.name] = Date.now();
+		database.updateMember(dbMember, { cooldowns: dbMember.cooldowns });
+		
 	}
 
 });
