@@ -9,7 +9,7 @@ module.exports = {
 	category: 'Moderation',
 	image: 'https://image.flaticon.com/icons/png/512/2061/premium/2061813.png',
 
-	execute(message, args) {
+	async execute(message, args) {
  
 		const target = message.mentions.members.first() || message.guild.members.cache.find(m => m == args[0] || m.user.username == args[0] || m.user.tag == args[0] || m.id == args[0]);
 
