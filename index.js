@@ -44,8 +44,8 @@ async function isValidArgument(arg, argType, message) {
 		
 		case 'bannedMember':
 			const bans = await message.guild.fetchBans();
-			const member = message.mentions.members.first() || bans.find(m => m == args[0] || m.user.username == args[0] || m.user.tag == args[0] || m.id == args[0]);
-			if (!member) return false;
+			const bannedMember = message.mentions.members.first() || bans.find(m => m == args[0] || m.user.username == args[0] || m.user.tag == args[0] || m.id == args[0]);
+			if (!bannedMember) return false;
 			break;
 
 		case 'number':
