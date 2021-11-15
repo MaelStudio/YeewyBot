@@ -34,13 +34,18 @@ mongoose.connect(config.mongodb, { useNewUrlParser: true, useUnifiedTopology: tr
 	.catch((err) => console.error(err));
 
 // argument checker
-function isValidArgument(arg, argType, message) {
+async function isValidArgument(arg, argType, message) {
 	switch(argType.toLowerCase()) {
 
 		case 'member':
-			const mention = message.mentions.members.first();
 			const member = message.mentions.members.first() || message.guild.members.cache.find(m => m == arg || m.user.username == arg || m.user.tag == arg || m.id == arg);
-			if (!member || mention && arg != `<@!${mention.id}>`) return false;
+			if (!member) return false;
+			break;
+		
+		case 'bannedMember':
+			const bans = await message.guild.fetchBans();
+			const member = message.mentions.members.first() || bans.find(m => m == args[0] || m.user.username == args[0] || m.user.tag == args[0] || m.id == args[0]);
+			if (!member) return false;
 			break;
 
 		case 'number':
@@ -206,11 +211,9 @@ client.on('messageCreate', async message => {
 	
 	// set command on cooldown
 	if (command.cooldown) {
-
 		const dbMember = await database.getMember(message.member);
 		dbMember.cooldowns[command.name] = Date.now();
 		database.updateMember(dbMember, { cooldowns: dbMember.cooldowns });
-		
 	}
 
 });
