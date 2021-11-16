@@ -23,6 +23,7 @@ module.exports = {
 			return;
 		}
 		
+        message.guild.members.unban(target);
 		let embed = new MessageEmbed()
 				.setColor('#47ff4d')
 				.setTitle('✅ • Success')
