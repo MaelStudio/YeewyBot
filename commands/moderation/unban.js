@@ -3,7 +3,7 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
 	name: 'unban',
 	description: 'Unban a banned member from the server.',
-	usage: 'unban [member]',
+	usage: 'unban [member-id]',
 	args: { required: ['memberId'] },
 	permission: 'BAN_MEMBERS',
 	category: 'Moderation',
@@ -11,7 +11,7 @@ module.exports = {
 
 	async execute(message, args) {
         
-        const target = message.guild.bans.get(args[0]);
+        const target = message.guild.bans.cache.get(args[0]);
 
         if(!target) {
 			let embed = new MessageEmbed()
