@@ -34,7 +34,7 @@ mongoose.connect(config.mongodb, { useNewUrlParser: true, useUnifiedTopology: tr
 	.catch((err) => console.error(err));
 
 // argument checker
-async function isValidArgument(arg, argType, message) {
+function isValidArgument(arg, argType, message) {
 	switch(argType.toLowerCase()) {
 
 		case 'member':
@@ -43,7 +43,7 @@ async function isValidArgument(arg, argType, message) {
 			break;
 		
 		case 'bannedMember':
-			const bans = await message.guild.fetchBans();
+			const bans = message.guild.bans;
 			const bannedMember = message.mentions.members.first() || bans.find(m => m == args[0] || m.user.username == args[0] || m.user.tag == args[0] || m.id == args[0]);
 			if (!bannedMember) return false;
 			break;
