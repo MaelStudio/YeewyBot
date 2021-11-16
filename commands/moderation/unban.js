@@ -11,8 +11,7 @@ module.exports = {
 
 	async execute(message, args) {
         
-        const bans = await message.guild.bans;
-		const target = message.mentions.members.first() || bans.find(m => m == args[0] || m.user.username == args[0] || m.user.tag == args[0] || m.id == args[0]);
+        const target = message.guild.bans.cache.find(m => m.user.username == args[0] || m.user.tag == args[0] || m.id == args[0]);
         
 		if(!message.guild.me.hasPermission('BAN_MEMBERS')) {
 			let embed = new MessageEmbed()
