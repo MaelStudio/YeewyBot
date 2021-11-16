@@ -114,7 +114,7 @@ client.on('messageCreate', async message => {
 
 	// check permission
 	if (command.permission) {
-		const authorPerms = message.channel.permissionsFor(message.author);
+		const authorPerms = message.channel.permissionsFor(message.author, true);
 		if (!authorPerms.has(command.permission) && message.author.id !== message.guild.ownerId) {
 			let embed = new Discord.MessageEmbed()
 				.setColor('#ffe900')
