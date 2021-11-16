@@ -13,7 +13,7 @@ module.exports = {
         
         const target = message.guild.bans.cache.find(m => m.user.username == args[0] || m.user.tag == args[0] || m.id == args[0]);
         
-		if(!message.guild.me.hasPermission('BAN_MEMBERS')) {
+		if(!message.channel.permissionsFor(message.author, true).has('BAN_MEMBERS') && message.author.id !== message.guild.ownerId) {
 			let embed = new MessageEmbed()
 				.setColor('#ff3a3a')
 				.setTitle('⚠️ • Error')
