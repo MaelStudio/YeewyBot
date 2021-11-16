@@ -41,6 +41,11 @@ function isValidArgument(arg, argType, message) {
 			const member = message.mentions.members.first() || message.guild.members.cache.find(m => m.user.username == arg || m.user.tag == arg || m.id == arg);
 			if (!member) return false;
 			break;
+		
+		case 'bannedMember':
+			const bannedMember = message.guild.bans.cache.find(m => m.user.username == arg || m.user.tag == arg || m.id == arg);
+			if (!bannedMember) return false;
+			break;
 
 		case 'number':
 			if(isNaN(arg)) return false;
