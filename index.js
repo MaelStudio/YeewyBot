@@ -38,13 +38,12 @@ function isValidArgument(arg, argType, message) {
 	switch(argType.toLowerCase()) {
 
 		case 'member':
-			const member = message.mentions.members.first() || message.guild.members.cache.find(m => m == arg || m.user.username == arg || m.user.tag == arg || m.id == arg);
+			const member = message.mentions.members.first() || message.guild.members.cache.find(m => m.user.username == arg || m.user.tag == arg || m.id == arg);
 			if (!member) return false;
 			break;
 		
 		case 'bannedMember':
-			const bans = message.guild.bans;
-			const bannedMember = message.mentions.members.first() || bans.find(m => m == args[0] || m.user.username == args[0] || m.user.tag == args[0] || m.id == args[0]);
+			const bannedMember = message.guild.bans.cache.find(m => m.user.username == arg || m.user.tag == arg || m.id == arg);
 			if (!bannedMember) return false;
 			break;
 
