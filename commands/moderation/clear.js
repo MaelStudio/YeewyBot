@@ -22,14 +22,15 @@ module.exports = {
 			message.channel.send({ embeds: [embed] });
 			return;
 		}
-
+		await message.delete()
         await message.channel.bulkDelete(amount, true);
         let embed = new MessageEmbed()
 				.setColor('#47ff4d')
 				.setTitle('✅ • Success')
-				.setDescription(`Cleared the last \`${amount}\` of the channel.`)
+				.setDescription(`Cleared the last \`${amount}\` messages of the channel.`)
 				.setAuthor(message.author.tag, message.author.avatarURL())
-		message.channel.send({ embeds: [embed] });
+		const msg = message.channel.send({ embeds: [embed] });
+		msg.delete(1000)
 
 	}
 }
