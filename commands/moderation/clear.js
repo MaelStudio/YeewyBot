@@ -7,7 +7,7 @@ module.exports = {
 	args: { required: ['integer'] },
 	permission: 'MANAGE_MESSAGES',
 	category: 'Moderation',
-	image: 'https://image.flaticon.com/icons/png/512/3477/premium/3477073.png',
+	image: 'https://cdn-icons-png.flaticon.com/512/2496/2496733.png',
 
 	async execute(message, args) {s
 
