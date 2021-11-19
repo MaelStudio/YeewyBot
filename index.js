@@ -49,6 +49,10 @@ function isValidArgument(arg, argType, message) {
 		case 'numberall':
 			if (isNaN(arg) && arg.toLowerCase() != 'all') return false;
 			break;
+
+		case 'integer':
+			if(isNaN(arg) || arg % 1 == 0) return false;
+			break;
 		
 		case 'color':
 			if (!['red', 'black'].includes(arg.toLowerCase())) return false;
