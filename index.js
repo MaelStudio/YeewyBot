@@ -51,7 +51,7 @@ function isValidArgument(arg, argType, message) {
 			break;
 
 		case 'integer':
-			if(isNaN(arg) || arg % 1 == 0) return false;
+			if(isNaN(arg) || arg % 1 !== 0) return false;
 			break;
 		
 		case 'color':
