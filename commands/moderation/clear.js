@@ -9,7 +9,7 @@ module.exports = {
 	category: 'Moderation',
 	image: 'https://cdn-icons-png.flaticon.com/512/2496/2496733.png',
 
-	async execute(message, args) {s
+	async execute(message, args) {
 
         const amount = args[0];
 
