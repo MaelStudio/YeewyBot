@@ -12,6 +12,7 @@ module.exports = {
 	async execute(message, args) {
 
         const amount = args[0];
+		const channel = message.channel;
 
         if(amount > 100 || amount < 1) {
 			let embed = new MessageEmbed()
@@ -22,15 +23,15 @@ module.exports = {
 			message.channel.send({ embeds: [embed] });
 			return;
 		}
-		await message.delete()
-        await message.channel.bulkDelete(amount, true);
+		await message.delete();
+        await channel.bulkDelete(amount, true);
         let embed = new MessageEmbed()
 				.setColor('#47ff4d')
 				.setTitle('✅ • Success')
 				.setDescription(`Cleared the last \`${amount}\` messages of the channel.`)
 				.setAuthor(message.author.tag, message.author.avatarURL())
-		const msg = message.channel.send({ embeds: [embed] });
-		msg.delete(1000)
+		const msg = await message.channel.send({ embeds: [embed] });
+		msg.delete(1000);
 
 	}
 }
