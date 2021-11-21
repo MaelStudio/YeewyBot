@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 // require files
 const config = require('./config.js');
 const util = require('./functions/util.js');
-const database = require('./database.js');
+const database = require('./functions/database.js');
 
 // create discord client
 const intents = new Discord.Intents(32767)
@@ -26,6 +26,7 @@ for (const folder of commandFolders) {
 		client.commands.set(command.name, command);
 	}
 }
+
 
 // mongoose database
 mongoose.connect(config.mongodb, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -210,7 +211,7 @@ client.on('messageCreate', async message => {
 	if (command.cooldown) {
 		const dbMember = await database.getMember(message.member);
 		dbMember.cooldowns[command.name] = Date.now();
-		dbMember.updateOne(dbMember, { cooldowns: dbMember.cooldowns });
+		database.updateMember(dbMember, { cooldowns: dbMember.cooldowns });
 	}
 
 });

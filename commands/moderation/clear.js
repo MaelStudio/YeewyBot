@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed, Channel } = require('discord.js');
 
 module.exports = {
 	name: 'clear',

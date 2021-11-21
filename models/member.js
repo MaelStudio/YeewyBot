@@ -6,7 +6,6 @@ const memberSchema = new Schema({
   guildId: String,
   walletBal: Number,
   bankBal: Number,
-  warns: Array,
   cooldowns: Object
 }, { timestamps: true, minimize: false });
 
