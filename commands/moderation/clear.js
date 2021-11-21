@@ -11,7 +11,7 @@ module.exports = {
 
 	async execute(message, args) {
 
-        const amount = args[0];
+        const amount = parseInt(args[0]);
 		const channel = message.channel;
 
         if(amount > 100 || amount < 1) {
