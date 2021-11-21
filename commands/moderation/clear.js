@@ -31,7 +31,7 @@ module.exports = {
 				.setDescription(`Cleared the last \`${amount}\` messages of the channel.`)
 				.setAuthor(message.author.tag, message.author.avatarURL())
 		const msg = await message.channel.send({ embeds: [embed] });
-		msg.delete(2000);
+		setTimeout(() => msg.delete(), 2000);
 
 	}
 }
