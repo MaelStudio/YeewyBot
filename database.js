@@ -1,13 +1,11 @@
-const Member = require('../models/member.js');
-const Guild = require('../models/guild.js');
-const config = require('../config.js');
+const Member = require('./models/member.js');
+const Guild = require('./models/guild.js');
+const config = require('./config.js');
 
 module.exports = {
 	getMember,
-	updateMember,
 	addCoinsToMember,
 	getGuild,
-	updateGuild
 }
 
 async function getMember(member) {
@@ -25,6 +23,7 @@ async function getMember(member) {
 			guildId: member.guild.id,
 			walletBal: 0,
 			bankBal: 0,
+			warns: [],
 			cooldowns: {}
 		});
 		const dbMember = await newMember.save();
@@ -32,11 +31,6 @@ async function getMember(member) {
 		return dbMember;
 	}
 
-}
-
-async function updateMember(dbMember, settings) {
-	console.log(`[^] Updated member ${dbMember['userId']} (${dbMember['guildId']}) in the database`);
-	return dbMember.updateOne(settings);
 }
 
 async function addCoinsToMember(member, amount, place) {
@@ -63,10 +57,4 @@ async function getGuild(guild) {
 		return dbGuild;
 	}
 
-}
-
-async function updateGuild(guild, settings) {
-	const dbGuild = await getGuild(guild);
-	console.log(`[^] Updated guild '${guild.name}' in the database`);
-	return dbGuild.updateOne(settings);
 }

@@ -1,5 +1,5 @@
 const { MessageEmbed } = require('discord.js');
-const mongoose = require('../../functions/database.js');
+const database = require('../../database.js');
 
 module.exports = {
 	name: 'prefix',
@@ -23,7 +23,8 @@ module.exports = {
 			message.channel.send({ embeds: [embed] });
 			return;
 		}
-		mongoose.updateGuild(message.guild, { prefix: prefix });
+		const dbGuild = await database.getGuild(message.guild);
+		dbGuild.updateOne({ prefix: prefix });
 		let embed = new MessageEmbed()
 				.setColor('#47ff4d')
 				.setTitle('✅ • Success')
