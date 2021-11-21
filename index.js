@@ -209,7 +209,7 @@ client.on('messageCreate', async message => {
 	if (command.cooldown) {
 		const dbMember = await database.getMember(message.member);
 		dbMember.cooldowns[command.name] = Date.now();
-		dbMember.updateOne(dbMember, { cooldowns: dbMember.cooldowns });
+		dbMember.updateOne({ cooldowns: dbMember.cooldowns });
 	}
 
 });
