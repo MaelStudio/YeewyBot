@@ -12,8 +12,7 @@ module.exports = {
 	execute(message, args) {
 
 		const target = message.mentions.members.first() || message.guild.members.cache.find(m => m == args[0] || m.user.username == args[0] || m.user.tag == args[0] || m.id == args[0]);
-		args.shift();
-		const reason = args.join(' ');
+		const reason = args.slice(1).join(' ');
 
 		if(target.id === message.author.id) {
 			let embed = new MessageEmbed()
