@@ -11,7 +11,7 @@ module.exports = {
 	category: 'Utility',
 	image: '',
 
-	execute(message, args) {
+	async execute(message, args) {
 
 		const prefix = args[0];
 		if(prefix.length > 5) {
