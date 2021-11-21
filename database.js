@@ -35,8 +35,8 @@ async function getMember(member) {
 
 async function addCoinsToMember(member, amount, place) {
 	const dbMember = await getMember(member);
-	if (place === 'wallet') updateMember(dbMember, { walletBal: dbMember['walletBal'] + parseInt(amount) });
-	if (place === 'bank') updateMember(dbMember, { bankBal: dbMember['bankBal'] + parseInt(amount) });
+	if (place === 'wallet') dbMember.updateOne(dbMember, { walletBal: dbMember['walletBal'] + parseInt(amount) });
+	if (place === 'bank') dbMember.updateOne(dbMember, { bankBal: dbMember['bankBal'] + parseInt(amount) });
 }
 
 async function getGuild(guild) {
