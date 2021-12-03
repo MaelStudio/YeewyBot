@@ -5,8 +5,8 @@ const mongoose = require('mongoose');
 
 // require files
 const config = require('./config.js');
-const util = require('./functions/util.js');
-const database = require('./functions/database.js');
+const util = require('./util.js');
+const database = require('./database.js');
 
 // create discord client
 const intents = new Discord.Intents(32767)

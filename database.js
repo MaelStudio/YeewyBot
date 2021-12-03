@@ -1,6 +1,6 @@
-const Member = require('../models/member.js');
-const Guild = require('../models/guild.js');
-const config = require('../config.js');
+const Member = require('./models/member.js');
+const Guild = require('./models/guild.js');
+const config = require('./config.js');
 
 module.exports = {
 	getMember,
