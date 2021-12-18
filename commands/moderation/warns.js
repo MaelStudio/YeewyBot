@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const database = require('../../database.js');
+const util = require('../../util.js');
 
 module.exports = {
 	name: 'warns',
@@ -28,9 +29,7 @@ module.exports = {
 			info = '';
             info += `Reason: ${dbTarget.warns[i].reason}`;
             info += `\nModerator: **${message.guild.members.cache.find(m => m.id == dbTarget.warns[i].moderator).user.tag}**`;
-			
-			const date = new Date(dbTarget.warns[i].date)
-            info += `\nDate: \`${date.toString()}\``;
+            info += `\nDate: \`${util.timeConverter(dbTarget.warns[i].date)}\``;
 
             embed.addField(`Warn '${dbTarget.warns[i].id}'`, info);
         }
