@@ -17,7 +17,7 @@ module.exports = {
         const dbTarget = await database.getMember(target);
 
 		let embed = new MessageEmbed()
-			.setColor('#ffffff')
+			.setColor('#ff7e2d')
 			.setAuthor(target.user.tag, target.user.displayAvatarURL())
             .setTitle('Warns')
 			.setFooter(`Warns count: ${dbTarget.warns.length}`)
