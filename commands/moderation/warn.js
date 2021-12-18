@@ -29,7 +29,7 @@ module.exports = {
 
 		let id = '';
 		const alphabet = 'abcdefghijklmnopqrstuvwxyz';
-		while (dbTarget.warns.includes(id) || id === 0) {
+		while (dbTarget.warns.includes(id) || id === '') {
 			for (i=0;i<3;i++) {
 				id += alphabet[util.randomInRange(0, 25)]
 			}
