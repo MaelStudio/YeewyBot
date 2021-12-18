@@ -1,3 +1,9 @@
+const toMs = {
+	s: 1000,
+	m: 1000*60,
+	h: 1000*60*60
+}
+
 module.exports = {
 	randomInRange,
 	capitalize,
@@ -35,10 +41,4 @@ function timeConverter(timestamp){
 	var sec = addLeadingZero(a.getUTCSeconds());
 	var time = `${date} ${month} ${year} ${hour}:${min}:${sec} (UTC)`;
 	return time;
-}
-
-const toMs = {
-	s: 1000,
-	m: 1000*60,
-	h: 1000*60*60
 }
