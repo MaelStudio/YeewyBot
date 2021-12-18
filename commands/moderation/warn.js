@@ -21,7 +21,7 @@ module.exports = {
 			let embed = new MessageEmbed()
 				.setColor('#ff3a3a')
 				.setTitle('⚠️ • Error')
-				.setDescription('This member has 20 warns.')
+				.setDescription('This member has the maximum of 20 warns.')
 				.setAuthor(message.author.tag, message.author.avatarURL())
 			message.channel.send({ embeds: [embed] });
 			return;
