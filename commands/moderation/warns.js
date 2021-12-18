@@ -28,7 +28,9 @@ module.exports = {
 			info = '';
             info += `Reason: ${dbTarget.warns[i].reason}`;
             info += `\nModerator: **${message.guild.members.cache.find(m => m.id == dbTarget.warns[i].moderator).user.tag}**`;
-            info += `\nDate: \`${dbTarget.warns[i].date}\``;
+			
+			const date = new Date(dbTarget.warns[i].date)
+            info += `\nDate: \`${date.toString()}\``;
 
             embed.addField(`Warn '${dbTarget.warns[i].id}'`, info);
         }
