@@ -25,6 +25,7 @@ async function getMember(member) {
 			guildId: member.guild.id,
 			walletBal: 0,
 			bankBal: 0,
+			warns: [],
 			cooldowns: {}
 		});
 		const dbMember = await newMember.save();
