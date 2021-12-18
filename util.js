@@ -29,7 +29,7 @@ module.exports = {
 			num = '0' + num.toString();
 		}
 		return num;
-	}
+	},
 
 	toMs: {
 		s: 1000,
