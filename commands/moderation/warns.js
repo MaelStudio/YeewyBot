@@ -19,16 +19,18 @@ module.exports = {
 			.setColor('#ffffff')
 			.setAuthor(target.user.tag, target.user.displayAvatarURL())
             .setTitle('Warns')
+			.setFooter(`Warns count: ${dbTarget.warns.length}`)
 			.setTimestamp()
         
         let info = ''
         for (i=0;i<dbTarget.warns.length;i++) {
 
+			info = '';
             info += `Reason: ${dbTarget.warns[i].reason}`;
             info += `\nModerator: **${message.guild.members.cache.find(m => m.id == dbTarget.warns[i].moderator).user.tag}**`;
             info += `\nDate: \`${dbTarget.warns[i].date}\``;
 
-            embed.addField(`Warn ${dbTarget.warns[i].id}`, info);
+            embed.addField(`Warn '${dbTarget.warns[i].id}'`, info);
         }
         
 		message.channel.send({ embeds: [embed] });
