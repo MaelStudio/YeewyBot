@@ -64,7 +64,7 @@ module.exports = {
 				.setDescription(command.description)
 				.addField('Usage:', '```' + prefix + command.usage + '```', false )
 				.setThumbnail(command.image)
-				.setFooter('[] = required argument / <> = optional argument ')
+				.setFooter('[] = required argument / <> = optional argument')
 			
 			if(command.aliases) embed.addField('Aliases:', '`' + command.aliases.join('`, `') + '`', true )
 			if(command.permission) embed.addField('Permission:', '`' + command.permission + '`', true)
