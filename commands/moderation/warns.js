@@ -31,7 +31,7 @@ module.exports = {
             info += `\nModerator: **${message.guild.members.cache.find(m => m.id == dbTarget.warns[i].moderator).user.tag}**`;
             info += `\nDate: \`${util.timeConverter(dbTarget.warns[i].date)}\``;
 
-            embed.addField(`Warn '${dbTarget.warns[i].id}'`, info);
+            embed.addField(`Warn '${dbTarget.warns[i].id}'`, info, true);
         }
         
 		message.channel.send({ embeds: [embed] });
