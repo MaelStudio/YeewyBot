@@ -37,6 +37,7 @@ async function getMember(member) {
 
 async function updateMember(dbMember, settings) {
 	console.log(`[^] Updated member ${dbMember['userId']} (${dbMember['guildId']}) in the database`);
+	console.log(settings);
 	return dbMember.updateOne(settings);
 }
 
