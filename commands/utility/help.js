@@ -31,8 +31,7 @@ module.exports = {
 				.setColor('#ffb5ed')
 				.setTitle('Help Page')
 				.setAuthor(message.author.tag, message.author.avatarURL())
-				// .setThumbnail('https://media.discordapp.net/attachments/772805402399604756/823642462110220308/yeewy-rainbow.png')
-				.setThumbnail('../../images/yeewy.png')
+				.setThumbnail('https://media.discordapp.net/attachments/772805402399604756/823642462110220308/yeewy-rainbow.png')
 				.setFooter(`Use y.help <command> to get info on a specific command`)
 			
 			Object.keys(commandsList).forEach(function(key) {
