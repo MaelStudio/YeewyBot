@@ -36,8 +36,8 @@ async function getMember(member) {
 }
 
 async function updateMember(dbMember, settings) {
+	await dbMember.updateOne(settings);
 	console.log(`[^] Updated member ${dbMember['userId']} (${dbMember['guildId']}) in the database`);
-	return dbMember.updateOne(settings);
 }
 
 async function addCoinsToMember(member, amount, place) {
