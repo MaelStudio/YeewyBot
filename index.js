@@ -71,8 +71,7 @@ client.once('ready', async () => {
 	console.log('——————————————————————————————');
 	console.log(`Client ID: ${client.user.id}`);
 	console.log(`Client status: ${client.presence.status}`);
-	console.log(`Currently on ${guildIds.length} guilds`);
-	console.log(`Bot owner: ${botOwner.tag}`);
+	console.log(`Guilds count: ${guildIds.length}`);
 	console.log('——————————————————————————————');
 
 	// changing status
