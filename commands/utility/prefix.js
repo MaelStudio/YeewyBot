@@ -1,5 +1,5 @@
 const { MessageEmbed } = require('discord.js');
-const mongoose = require('../../database.js');
+const database = require('../../database.js');
 
 module.exports = {
 	name: 'prefix',
@@ -13,8 +13,8 @@ module.exports = {
 
 	execute(message, args) {
 
-		const prefix = args[0];
-		if(prefix.length > 5) {
+		const newPrefix = args[0];
+		if(newPrefix.length > 5) {
 			let embed = new MessageEmbed()
 				.setColor('#ff3a3a')
 				.setTitle('⚠️ • Error')
@@ -23,11 +23,14 @@ module.exports = {
 			message.channel.send({ embeds: [embed] });
 			return;
 		}
-		mongoose.updateGuild(message.guild, { prefix: prefix });
+
+		const dbGuild = await database.getGuild(message.guild);
+		await dbGuild.updateOne({ prefix: newPrefix })
+
 		let embed = new MessageEmbed()
 				.setColor('#47ff4d')
 				.setTitle('✅ • Success')
-				.setDescription(`Set the server's prefix to \`${prefix}\`.`)
+				.setDescription(`Set the server's prefix to \`${newPrefix}\`.`)
 				.setAuthor(message.author.tag, message.author.avatarURL())
 		message.channel.send({ embeds: [embed] });
 		

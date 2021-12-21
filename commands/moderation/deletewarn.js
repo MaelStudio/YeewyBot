@@ -28,7 +28,7 @@ module.exports = {
 		}
 		
         const newWarns = dbTarget.warns.filter(w => w.id != id);
-		database.updateMember(dbTarget, { warns: newWarns });
+		await dbTarget.updateOne({ warns: newWarns });
 
 		let embed = new MessageEmbed()
 				.setColor('#47ff4d')

@@ -42,7 +42,7 @@ module.exports = {
 			id: id
 		}
 		dbTarget.warns.push(warn);
-		database.updateMember(dbTarget, { warns: dbTarget.warns });
+		dbTarget.updateOne({ warns: dbTarget.warns });
 		
 		let embed = new MessageEmbed()
 				.setColor('#47ff4d')
