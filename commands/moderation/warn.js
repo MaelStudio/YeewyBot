@@ -42,13 +42,14 @@ module.exports = {
 			id: id
 		}
 		dbTarget.warns.push(warn);
-		dbTarget.updateOne({ warns: dbTarget.warns });
+		await dbTarget.updateOne({ warns: dbTarget.warns });
 		
 		let embed = new MessageEmbed()
 				.setColor('#47ff4d')
 				.setTitle('✅ • Success')
 				.setDescription(`**${target.user.tag}** has been warned by **${message.author.tag}** for the reason: ${reason}`)
 				.setAuthor(message.author.tag, message.author.avatarURL())
+				.setFooter(`Warns count: ${dbTarget.warns.length}`)
 		message.channel.send({ embeds: [embed] });
         
 	}
