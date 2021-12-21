@@ -27,9 +27,9 @@ module.exports = {
         for (i=0;i<dbTarget.warns.length;i++) {
 
 			info = '';
-            info += `\`Reason:\` ${dbTarget.warns[i].reason}`;
-            info += `\n\`Moderator:\` ${message.guild.members.cache.find(m => m.id == dbTarget.warns[i].moderator).user.tag}`;
-            info += `\n\`Date:\` ${util.timeConverter(dbTarget.warns[i].date)}`;
+            info += `Reason: ${dbTarget.warns[i].reason}`;
+            info += `\nModerator: **${message.guild.members.cache.find(m => m.id == dbTarget.warns[i].moderator).user.tag}**`;
+            info += `\nDate: \`${util.timeConverter(dbTarget.warns[i].date)}\``;
 
             embed.addField(`Warn '${dbTarget.warns[i].id}'`, info, true);
         }
