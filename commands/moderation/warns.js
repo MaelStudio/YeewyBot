@@ -23,7 +23,7 @@ module.exports = {
 			.setFooter(`Warns count: ${dbTarget.warns.length}`)
 			.setTimestamp()
         
-        let info = ''
+        let info = '';
         for (i=0;i<dbTarget.warns.length;i++) {
 
 			info = '';
