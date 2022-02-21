@@ -7,7 +7,7 @@ module.exports = {
 	usage: 'bitcoin',
 	aliases: ['btc'],
 	category: 'Fun',
-	image: 'https://cdn-icons-png.flaticon.com/512/2586/2586092.png',
+	image: 'https://cdn-icons-png.flaticon.com/512/1801/1801863.png',
 
 	async execute(message, args) {
 		const url = 'http://api.coindesk.com/v1/bpi/currentprice.json';
