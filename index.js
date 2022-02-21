@@ -27,7 +27,6 @@ for (const folder of commandFolders) {
 	}
 }
 
-
 // mongoose database
 mongoose.connect(config.mongodb, { useNewUrlParser: true, useUnifiedTopology: true })
 	.then(() => console.log('[^] Connected to the database'))
