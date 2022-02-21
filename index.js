@@ -168,7 +168,7 @@ client.on('messageCreate', async message => {
 	// check cooldown
 	if (command.cooldown) {
 
-		const cooldown = util.toMs(command.cooldown.amount, command.cooldown.unit);
+		const cooldown = util.toMs(command.cooldown.value, command.cooldown.unit);
 		const dbMember = await database.getMember(message.member);
 		const lastUsed = dbMember.cooldowns[command.name];
 
@@ -177,7 +177,7 @@ client.on('messageCreate', async message => {
 			let embed = new Discord.MessageEmbed()
 				.setColor('#99611e')
 				.setTitle('⏳ • Command on cooldown')
-				.setDescription(`The \`${command.name}\` command is on cooldown. Please wait \`${Math.round(toWait*10)/10}${command.cooldown.unit}\`.`)
+				.setDescription(`The \`${command.name}\` command is on cooldown. Please wait \`${Math.round(toWait*10)/10} ${command.cooldown.unit}\`.`)
 				.setAuthor(message.author.tag, message.author.avatarURL())
 			message.channel.send({ embeds: [embed] });
 			return;

@@ -7,7 +7,7 @@ module.exports = {
 	description: 'Bet money on the color the ball will land on',
 	usage: 'roulette [bet] [red | black]',
 	args: { required: ['numberall', 'color'] },
-	cooldown: { unit: 's', amount: 10 },
+	cooldown: { unit: 's', value: 10 },
 	category: 'Economy',
 	image: 'https://cdn-icons-png.flaticon.com/512/1055/1055813.png',
 

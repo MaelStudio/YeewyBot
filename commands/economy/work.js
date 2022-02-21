@@ -6,7 +6,7 @@ module.exports = {
 	name: 'work',
 	description: 'Work to earn money (1h coolown)',
 	usage: 'work',
-	cooldown: { unit: 'm', amount: 60 },
+	cooldown: { unit: 'm', value: 60 },
 	category: 'Economy',
 	image: 'https://cdn-icons-png.flaticon.com/512/3281/3281289.png',
 
