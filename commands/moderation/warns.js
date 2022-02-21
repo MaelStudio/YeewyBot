@@ -9,7 +9,7 @@ module.exports = {
 	args: { required: ['member'] },
 	permission: 'KICK_MEMBERS',
 	category: 'Moderation',
-	image: '',
+	image: 'https://cdn-icons-png.flaticon.com/512/3207/3207539.png',
 
 	async execute(message, args) {
 
