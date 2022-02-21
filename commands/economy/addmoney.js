@@ -9,7 +9,7 @@ module.exports = {
 	aliases: ['add-money'],
 	permission: 'ADMINISTRATOR',
 	category: 'Economy',
-	image: '../../images/addmoney.png',
+	image: 'attachment://../../images/addmoney.png',
 
 	execute(message, args) {
 
