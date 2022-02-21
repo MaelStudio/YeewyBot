@@ -9,7 +9,7 @@ module.exports = {
 	aliases: ['add-money'],
 	permission: 'ADMINISTRATOR',
 	category: 'Economy',
-	image: 'attachment://../../images/addmoney.png',
+	image: 'https://cdn-icons-png.flaticon.com/512/3135/3135679.png',
 
 	execute(message, args) {
 

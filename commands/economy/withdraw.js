@@ -8,7 +8,7 @@ module.exports = {
 	args: { required: ['numberall'] },
 	aliases: ['with'],
 	category: 'Economy',
-	image: 'https://image.flaticon.com/icons/png/512/214/214362.png',
+	image: 'https://cdn-icons-png.flaticon.com/512/214/214362.png',
 
 	async execute(message, args) {
 

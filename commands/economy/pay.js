@@ -7,7 +7,7 @@ module.exports = {
 	usage: 'pay [member] [amount | all]',
 	args: { required: ['member', 'numberall'] },
 	category: 'Economy',
-	image: 'https://image.flaticon.com/icons/png/512/3081/3081315.png',
+	image: 'https://cdn-icons-png.flaticon.com/512/3081/3081315.png',
 
 	async execute(message, args) {
 

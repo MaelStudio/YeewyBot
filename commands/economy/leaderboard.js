@@ -7,7 +7,7 @@ module.exports = {
 	usage: 'leaderboard',
 	aliases: ['lb', 'top'],
 	category: 'Economy',
-	image: 'https://image.flaticon.com/icons/png/512/3553/3553968.png',
+	image: 'https://cdn-icons-png.flaticon.com/512/3553/3553968.png',
 
 	async execute(message, args) {
 

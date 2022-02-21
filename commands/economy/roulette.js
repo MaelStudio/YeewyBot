@@ -9,7 +9,7 @@ module.exports = {
 	args: { required: ['numberall', 'color'] },
 	cooldown: { unit: 's', amount: 10 },
 	category: 'Economy',
-	image: 'https://image.flaticon.com/icons/png/512/1055/1055813.png',
+	image: 'https://cdn-icons-png.flaticon.com/512/1055/1055813.png',
 
 	async execute(message, args) {
 
