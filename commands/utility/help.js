@@ -68,6 +68,7 @@ module.exports = {
 			
 			if(command.aliases) embed.addField('Aliases:', '`' + command.aliases.join('`, `') + '`', true )
 			if(command.permission) embed.addField('Permission:', '`' + command.permission + '`', true)
+			if(command.cooldown) embed.addField('Cooldown:', '`' + command.cooldown.value + ' ' + command.cooldown.unit + '`', true)
 			
 			message.channel.send({ embeds: [embed] });
 		}
