@@ -7,7 +7,7 @@ module.exports = {
 	usage: 'wheretheissat',
 	aliases: ['wtia', 'where-the-iss-at'],
 	category: 'Fun',
-	image: 'https://image.flaticon.com/icons/png/512/662/662922.png',
+	image: 'https://cdn-icons-png.flaticon.com/512/662/662922.png',
 
 	async execute(message, args) {
 		const url = 'https://api.wheretheiss.at/v1/satellites/25544';

@@ -21,7 +21,7 @@ module.exports = {
 	usage: 'time',
 	aliases: ['whattimeisit'],
 	category: 'Fun',
-	image: 'https://image.flaticon.com/icons/png/512/2784/2784459.png',
+	image: 'https://cdn-icons-png.flaticon.com/512/2784/2784459.png',
 
 	execute(message, args) {
 

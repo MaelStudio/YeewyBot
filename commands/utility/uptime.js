@@ -5,7 +5,7 @@ module.exports = {
 	description: 'For how long have I been running ?',
 	usage: 'uptime',
 	category: 'Utility',
-	image: 'https://image.flaticon.com/icons/png/512/850/850960.png',
+	image: 'https://cdn-icons-png.flaticon.com/512/850/850960.png',
 
 	execute(message, args) {
 		let embed = new MessageEmbed()

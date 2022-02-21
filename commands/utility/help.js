@@ -8,7 +8,7 @@ module.exports = {
 	args: { optional: ['command'] },
 	aliases: ['commands'],
 	category: 'Utility',
-	image: 'https://image.flaticon.com/icons/png/512/1041/1041728.png',
+	image: 'https://cdn-icons-png.flaticon.com/512/1041/1041728.png',
 
 	async execute(message, args) {
 

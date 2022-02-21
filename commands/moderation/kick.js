@@ -7,7 +7,7 @@ module.exports = {
 	args: { required: ['member'], optional: ['text'] },
 	permission: 'KICK_MEMBERS',
 	category: 'Moderation',
-	image: 'https://image.flaticon.com/icons/png/512/4584/4584372.png',
+	image: 'https://cdn-icons-png.flaticon.com/512/4584/4584372.png',
 
 	execute(message, args) {
 
