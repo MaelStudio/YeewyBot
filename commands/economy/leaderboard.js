@@ -12,17 +12,8 @@ module.exports = {
 	async execute(message, args) {
 
 		const members = await Member.find();
-		let guildMembers = [];
-
-		for (let i in members) {
-			if (members[i]['guildId'] === message.guild.id) {
-				guildMembers.push(members[i]);
-			}
-		}
-
-		const leaderboard = guildMembers.sort(function (memberA, memberB) {
-  			return  (memberB['walletBal'] + memberB['bankBal']) - (memberA['walletBal'] + memberA['bankBal']);
-		});
+		const guildMembers = members.filter(mbr => mbr['guildId'] === message.guild.id);
+		const leaderboard = guildMembers.sort((mbrA, mbrB) => (mbrB['walletBal'] + mbrB['bankBal']) - (mbrA['walletBal'] + mbrA['bankBal']));
 
 		let lbMessage = '';
 		let yourRank = 0;
