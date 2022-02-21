@@ -9,7 +9,7 @@ module.exports = {
     aliases: ['delete-warn', 'removewarn', 'remove-warn'],
 	permission: 'KICK_MEMBERS',
 	category: 'Moderation',
-	image: 'https://cdn-icons.flaticon.com/png/512/2645/premium/2645424.png',
+	image: '',
 
 	async execute(message, args) {
 
