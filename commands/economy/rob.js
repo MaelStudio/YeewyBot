@@ -7,7 +7,7 @@ module.exports = {
 	description: 'Attempt to rob a member\'s wallet (1h coolown)',
 	usage: 'rob [member]',
 	args: { required: ['member'] },
-	cooldown: { unit: 'm', value: 60 },
+	cooldown: { unit: 'min', value: 60 },
 	category: 'Economy',
 	image: 'https://cdn-icons-png.flaticon.com/512/1576/1576476.png',
 

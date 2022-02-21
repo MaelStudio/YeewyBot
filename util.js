@@ -9,7 +9,7 @@ module.exports = {
 function toMs(value, unit) {
 	const coef = {
 		s: 1000,
-		m: 1000*60,
+		min: 1000*60,
 		h: 1000*60*60
 	}
 	return value*coef[unit];
