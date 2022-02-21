@@ -168,8 +168,7 @@ client.on('messageCreate', async message => {
 	// check cooldown
 	if (command.cooldown) {
 
-		const cooldown = util.toMs(command.cooldown.amout, command.cooldown.unit);
-		console.log(cooldown);
+		const cooldown = util.toMs(command.cooldown.amount, command.cooldown.unit);
 		const dbMember = await database.getMember(message.member);
 		const lastUsed = dbMember.cooldowns[command.name];
 
