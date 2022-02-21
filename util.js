@@ -12,6 +12,8 @@ function toMs(value, unit) {
 		m: 1000*60,
 		h: 1000*60*60
 	}
+	console.log(value + unit);
+	console.log(coef[unit]);
 	return value*coef[unit];
 }
 
