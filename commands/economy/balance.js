@@ -12,10 +12,11 @@ module.exports = {
 
 	async execute(message, args) {
 
+		let target;
 		if(args[0]) {
-			const target = message.guild.members.cache.find(m => m == args[0] || m.user.username == args[0] || m.user.tag == args[0] || m.id == args[0] || m.id == args[0].slice(2, 20));
+			target = message.guild.members.cache.find(m => m == args[0] || m.user.username == args[0] || m.user.tag == args[0] || m.id == args[0] || m.id == args[0].slice(2, 20));
 		} else {
-			const target = message.member;
+			target = message.member;
 		}
 		const dbTarget = await database.getMember(target);
 
