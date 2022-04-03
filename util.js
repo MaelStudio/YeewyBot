@@ -4,7 +4,7 @@ module.exports = {
 	capitalize,
 	addLeadingZero,
 	timeConverter,
-	getUserFromMention
+	getUserIdFromMention
 }
 
 function toMs(value, unit) {
