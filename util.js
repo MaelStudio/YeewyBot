@@ -3,7 +3,8 @@ module.exports = {
 	randomInRange,
 	capitalize,
 	addLeadingZero,
-	timeConverter
+	timeConverter,
+	getUserFromMention
 }
 
 function toMs(value, unit) {
@@ -44,4 +45,18 @@ function timeConverter(timestamp){
 	var sec = addLeadingZero(a.getUTCSeconds());
 	var time = `${date} ${month} ${year} ${hour}:${min}:${sec} (UTC)`;
 	return time;
+}
+
+function getUserFromMention(mention) {
+	if (!mention) return;
+
+	if (mention.startsWith('<@') && mention.endsWith('>')) {
+		mention = mention.slice(2, -1);
+
+		if (mention.startsWith('!')) {
+			mention = mention.slice(1);
+		}
+
+		return client.users.cache.get(mention);
+	}
 }
