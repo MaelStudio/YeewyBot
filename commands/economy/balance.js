@@ -12,7 +12,7 @@ module.exports = {
 
 	async execute(message, args) {
 
-		const target = message.mentions.members.first() || message.guild.members.cache.find(m => m == args[0] || m.user.username == args[0] || m.user.tag == args[0] || m.id == args[0]) || message.member;
+		const target = message.guild.members.cache.find(m => m == args[0] || m.user.username == args[0] || m.user.tag == args[0] || m.id == args[0] || m.id == args[0].slice(2, 20)) || message.member;
 		const dbTarget = await database.getMember(target);
 
 		let embed = new MessageEmbed()
