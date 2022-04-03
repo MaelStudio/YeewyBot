@@ -37,7 +37,7 @@ function isValidArgument(arg, argType, message) {
 	switch(argType.toLowerCase()) {
 
 		case 'member':
-			if (!util.getMemberFromArg(arg)) return false;
+			if (!util.getMemberFromArg(arg, message.guild)) return false;
 			break;
 
 		case 'number':

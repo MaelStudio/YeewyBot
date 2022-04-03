@@ -15,7 +15,7 @@ module.exports = {
 
 		let target;
 		if(args[0]) {
-			target = util.getMemberFromArg(args[0]);
+			target = util.getMemberFromArg(args[0], message.guild);
 		} else {
 			target = message.member;
 		}
