@@ -1,5 +1,5 @@
 const { MessageEmbed } = require('discord.js');
-const { getChannelFromArg } = require('../../util');
+const util = require('../../util');
 
 module.exports = {
 	name: 'joinmessage',
@@ -12,7 +12,7 @@ module.exports = {
 
 	execute(message, args) {
 
-		const channel = getChannelFromArg(args[0], message.guild);
+		const channel = util.getChannelFromArg(args[0], message.guild);
 		const joinMessage = args.slice(1).join(' ');
 		
 		let embed = new MessageEmbed()
