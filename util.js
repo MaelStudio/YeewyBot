@@ -1,10 +1,12 @@
+const { aggregate } = require("./models/member");
+
 module.exports = {
 	toMs,
 	randomInRange,
 	capitalize,
 	addLeadingZero,
 	timeConverter,
-	getUserIdFromMention
+	getMemberFromArg
 }
 
 function toMs(value, unit) {
@@ -59,4 +61,10 @@ function getUserIdFromMention(mention) {
 
 		return mention;
 	}
+}
+
+function getMemberFromArg(arg, guild) {
+	if (!arg) return;
+	const member = guild.members.cache.find(m => m.user.username == arg || m.user.tag == arg || m.id == arg || m.id == getUserIdFromMention(arg));
+	return member;
 }
