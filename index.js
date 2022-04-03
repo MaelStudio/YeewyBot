@@ -38,6 +38,8 @@ function isValidArgument(arg, argType, message) {
 
 		case 'member':
 			const member = message.guild.members.cache.find(m => m.user.username == arg || m.user.tag == arg || m.id == arg || m.id == arg.slice(2, 20));
+			console.log(arg);
+			console.log(arg.slice(2, 20));
 			if (!member) return false;
 			break;
 
