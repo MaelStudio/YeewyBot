@@ -39,6 +39,10 @@ function isValidArgument(arg, argType, message) {
 		case 'member':
 			if (!util.getMemberFromArg(arg, message.guild)) return false;
 			break;
+		
+		case 'channel':
+			if(!util.getChannelFromArg(arg, message.guild)) return false;
+			break;
 
 		case 'number':
 			if(isNaN(arg)) return false;
