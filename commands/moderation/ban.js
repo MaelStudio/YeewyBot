@@ -45,10 +45,10 @@ module.exports = {
 		
 		target.ban({reason: reason});
 		let embed = new MessageEmbed()
-				.setColor('#47ff4d')
-				.setTitle('✅ • Success')
-				.setDescription(`Banned member **${target.user.tag}** from the server.`)
-				.setAuthor(message.author.tag, message.author.avatarURL())
+			.setColor('#47ff4d')
+			.setTitle('✅ • Success')
+			.setDescription(`Banned member **${target.user.tag}** from the server.`)
+			.setAuthor(message.author.tag, message.author.avatarURL())
 		message.channel.send({ embeds: [embed] });
 
 	}

@@ -1,12 +1,11 @@
-const { aggregate } = require("./models/member");
-
 module.exports = {
 	toMs,
 	randomInRange,
 	capitalize,
 	addLeadingZero,
 	timeConverter,
-	getMemberFromArg
+	getMemberFromArg,
+	getChannelFromArg
 }
 
 function toMs(value, unit) {
@@ -49,13 +48,13 @@ function timeConverter(timestamp){
 	return time;
 }
 
-function getUserIdFromMention(mention) {
+function getIdFromMention(mention) {
 	if (!mention) return;
 
-	if (mention.startsWith('<@') && mention.endsWith('>')) {
+	if ((mention.startsWith('<@') || mention.startsWith('<#')) && mention.endsWith('>')) {
 		mention = mention.slice(2, -1);
 
-		if (mention.startsWith('!')) {
+		if (mention.startsWith('!') || mention.startsWith('&')) {
 			mention = mention.slice(1);
 		}
 
@@ -65,6 +64,12 @@ function getUserIdFromMention(mention) {
 
 function getMemberFromArg(arg, guild) {
 	if (!arg) return;
-	const member = guild.members.cache.find(m => m.user.username == arg || m.user.tag == arg || m.id == arg || m.id == getUserIdFromMention(arg));
+	const member = guild.members.cache.find(m => m.user.username == arg || m.user.tag == arg || m.id == arg || m.id == getIdFromMention(arg));
+	return member;
+}
+
+function getChannelFromArg(arg, guild) {
+	if (!arg) return;
+	const member = guild.channels.cache.find(c => c.id == arg || c.id == getIdFromMention(arg) || c.name == arg);
 	return member;
 }
