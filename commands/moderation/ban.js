@@ -1,4 +1,5 @@
 const { MessageEmbed } = require('discord.js');
+const util = require('../../util.js');
 
 module.exports = {
 	name: 'ban',
@@ -11,7 +12,7 @@ module.exports = {
 
 	execute(message, args) {
 
-		const target = message.mentions.members.first() || message.guild.members.cache.find(m => m == args[0] || m.user.username == args[0] || m.user.tag == args[0] || m.id == args[0]);
+		const target = util.getMemberFromArg(args[0], message.guild);
 		const reason = args.slice(1).join(' ');
 
 		if(target.id === message.author.id) {

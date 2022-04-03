@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const database = require('../../database.js');
+const util = require('../../util.js');
 
 module.exports = {
 	name: 'pay',
@@ -11,7 +12,7 @@ module.exports = {
 
 	async execute(message, args) {
 
-		const target = message.mentions.members.first() || message.guild.members.cache.find(m => m == args[0] || m.user.username == args[0] || m.user.tag == args[0] || m.id == args[0]);
+		const target = util.getMemberFromArg(args[0], message.guild);
 		const dbMember = await database.getMember(message.member);
 
 		var amount = args[1];

@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const database = require('../../database.js');
+const util = require('../../util.js');
 
 module.exports = {
 	name: 'addmoney',
@@ -13,7 +14,7 @@ module.exports = {
 
 	execute(message, args) {
 
-		const target = message.mentions.members.first() || message.guild.members.cache.find(m => m == args[0] || m.user.username == args[0] || m.user.tag == args[0] || m.id == args[0]);
+		const target = util.getMemberFromArg(args[0], message.guild);
 
 		let place = 'bank';
 		if (args.length > 2 && args[2].toLowerCase() === 'wallet') {
