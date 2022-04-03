@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const database = require('../../database.js');
+const util = requier('../../util.js')
 
 module.exports = {
 	name: 'balance',
