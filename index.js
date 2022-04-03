@@ -37,7 +37,7 @@ function isValidArgument(arg, argType, message) {
 	switch(argType.toLowerCase()) {
 
 		case 'member':
-			const member = message.guild.members.cache.find(m => m.user.username == arg || m.user.tag == arg || m.id == arg || m.id == util.getUserFromMention(arg));
+			const member = message.guild.members.cache.find(m => m.user.username == arg || m.user.tag == arg || m.id == arg || m.id == util.getUserIdFromMention(arg));
 			if (!member) return false;
 			break;
 

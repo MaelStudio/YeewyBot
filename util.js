@@ -47,7 +47,7 @@ function timeConverter(timestamp){
 	return time;
 }
 
-function getUserFromMention(mention) {
+function getUserIdFromMention(mention) {
 	if (!mention) return;
 
 	if (mention.startsWith('<@') && mention.endsWith('>')) {
@@ -57,6 +57,6 @@ function getUserFromMention(mention) {
 			mention = mention.slice(1);
 		}
 
-		return client.users.cache.get(mention);
+		return mention;
 	}
 }

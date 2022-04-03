@@ -14,7 +14,7 @@ module.exports = {
 
 		let target;
 		if(args[0]) {
-			target = message.guild.members.cache.find(m => m == args[0] || m.user.username == args[0] || m.user.tag == args[0] || m.id == args[0] || m.id == util.getUserFromMention(args[0]));
+			target = message.guild.members.cache.find(m => m == args[0] || m.user.username == args[0] || m.user.tag == args[0] || m.id == args[0] || m.id == util.getUserIdFromMention(args[0]));
 		} else {
 			target = message.member;
 		}
