@@ -15,7 +15,7 @@ module.exports = {
 
 		const dbGuild = await database.getGuild(message.guild);
 
-        if(!dbGuild.join) {
+        if(!dbGuild.join.size) {
             let embed = new MessageEmbed()
 				.setColor('#ff3a3a')
 				.setTitle('⚠️ • Error')
@@ -25,7 +25,7 @@ module.exports = {
             return;
         }
 
-		await dbGuild.updateOne({ join: null });
+		await dbGuild.updateOne({ join: {} });
 
 		let embed = new MessageEmbed()
 			.setColor('#47ff4d')
