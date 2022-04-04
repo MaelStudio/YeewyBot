@@ -27,7 +27,7 @@ module.exports = {
 		let embed = new MessageEmbed()
 			.setColor('#47ff4d')
 			.setTitle('✅ • Success')
-			.setDescription(`Set the server\'s leave message in channel <#${channel.id}>:\n${joinMessage}`)
+			.setDescription(`Set the server\'s leave message in channel <#${channel.id}>:\n${leaveMessage}`)
 			.setAuthor(message.author.tag, message.author.avatarURL())
 		message.channel.send({ embeds: [embed] });
 
