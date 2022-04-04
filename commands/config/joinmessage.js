@@ -12,7 +12,7 @@ module.exports = {
 	category: 'Configuration',
 	image: 'https://cdn-icons-png.flaticon.com/512/817/817615.png',
 
-	execute(message, args) {
+	async execute(message, args) {
 
 		const channel = util.getChannelFromArg(args[0], message.guild);
 		const joinMessage = args.slice(1).join(' ');
