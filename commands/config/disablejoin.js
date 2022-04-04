@@ -24,8 +24,8 @@ module.exports = {
 			message.channel.send({ embeds: [embed] });
             return;
         }
-        
-		await dbGuild.updateOne({ join: {} });
+
+		await dbGuild.updateOne({ join: null });
 
 		let embed = new MessageEmbed()
 			.setColor('#47ff4d')
