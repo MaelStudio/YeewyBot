@@ -15,17 +15,17 @@ module.exports = {
 
 		const dbGuild = await database.getGuild(message.guild);
 
-        if(!dbGuild.leave.size) {
+        if(!dbGuild.leave) {
             let embed = new MessageEmbed()
 				.setColor('#ff3a3a')
 				.setTitle('⚠️ • Error')
-				.setDescription('The server\'s lleave message is already disabled.')
+				.setDescription('The server\'s leave message is already disabled.')
 				.setAuthor(message.author.tag, message.author.avatarURL())
 			message.channel.send({ embeds: [embed] });
             return;
         }
 
-		await dbGuild.updateOne({ leave: {} });
+		await dbGuild.updateOne({ leave: null });
 
 		let embed = new MessageEmbed()
 			.setColor('#47ff4d')
