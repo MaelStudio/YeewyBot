@@ -5,8 +5,8 @@ const util = require('../../util');
 module.exports = {
 	name: 'joinmessage',
 	description: 'Set a message to welcome new members.',
-	usage: 'joinmessage [channel] [message]',
-	args: { required: ['channel', 'text'] },
+	usage: 'joinmessage [channel] [embed: yes | no] [message]',
+	args: { required: ['channel', 'yesno', 'text'] },
 	permission: 'ADMINISTRATOR',
 	aliases: ['join-message'],
 	category: 'Configuration',
@@ -15,12 +15,19 @@ module.exports = {
 	async execute(message, args) {
 
 		const channel = util.getChannelFromArg(args[0], message.guild);
-		const joinMessage = args.slice(1).join(' ');
+		let isEmbed;
+		if(args[1].toLowerCase() === 'yes') {
+			isEmbed = true;
+		} else {
+			isEmbed = false;
+		}
+		const joinMessage = args.slice(2).join(' ');
 		const dbGuild = await database.getGuild(message.guild);
 		
 		const join = {
 			message: joinMessage,
-			channel: channel.id
+			channel: channel.id,
+			embed: isEmbed
 		}
 		await dbGuild.updateOne({ join: join });
 
