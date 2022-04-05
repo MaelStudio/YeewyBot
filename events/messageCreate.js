@@ -1,3 +1,4 @@
+const { MessageEmbed } = require('discord.js');
 const config = require('../config.js');
 const util = require('../util.js');
 const database = require('../database.js');
@@ -45,7 +46,7 @@ module.exports = {
 
         // mention
         if (message.content === '<@!809060998015090741>') {
-            let embed = new Discord.MessageEmbed()
+            let embed = new MessageEmbed()
                 .setColor('#ffb5ed')
                 .setTitle(`My prefix in this server is ${prefix}`)
                 .setDescription(`Use \`${prefix}help\` to get the help page.`)
@@ -66,7 +67,7 @@ module.exports = {
         if (command.permission) {
             const authorPerms = message.channel.permissionsFor(message.author, true);
             if (!authorPerms.has(command.permission) && message.author.id !== message.guild.ownerId) {
-                let embed = new Discord.MessageEmbed()
+                let embed = new MessageEmbed()
                     .setColor('#ffe900')
                     .setTitle('🚧 • Missing permission')
                     .setDescription(`You cannot use this command. Missing permission \`${command.permission}\`.`)
@@ -108,7 +109,7 @@ module.exports = {
 
             // wrong args
             if(!goodUsage) {
-                let embed = new Discord.MessageEmbed()
+                let embed = new MessageEmbed()
                     .setColor('#666768')
                     .setTitle('📎 • Wrong command usage')
                     .setDescription(`Invalid arguments specified: \`${prefix + command.usage}\``)
@@ -127,7 +128,7 @@ module.exports = {
 
             if (lastUsed && Date.now() - lastUsed < cooldown) {
                 const toWait = (lastUsed - Date.now() + cooldown) / util.toMs(1, command.cooldown.unit);
-                let embed = new Discord.MessageEmbed()
+                let embed = new MessageEmbed()
                     .setColor('#99611e')
                     .setTitle('⏳ • Command on cooldown')
                     .setDescription(`The \`${command.name}\` command is on cooldown. Please wait \`${Math.round(toWait*10)/10} ${command.cooldown.unit}\`.`)
@@ -144,7 +145,7 @@ module.exports = {
         } catch (error) {
 
             console.error(error);
-            let embed = new Discord.MessageEmbed()
+            let embed = new MessageEmbed()
                     .setColor('#ff2a00')
                     .setTitle('✂️ • Code error')
                     .setDescription('Sorry, an error occured trying to execute the command. The bot owner has been warned.')
@@ -152,7 +153,7 @@ module.exports = {
             message.channel.send({ embeds: [embed] });
 
             // log error
-            let logEmbed = new Discord.MessageEmbed()
+            let logEmbed = new MessageEmbed()
                 .setTitle('An error occured executing command')
                 .setDescription(`Message sent by **${message.author.tag}** (${message.guild.name}) :\n${message.content}\n\nError:\n\`\`\`js\n${error}\n\`\`\``)
                 .setTimestamp()
