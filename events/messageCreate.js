@@ -30,6 +30,10 @@ function isValidArgument(arg, argType, message) {
 		case 'color':
 			if (!['red', 'black'].includes(arg.toLowerCase())) return false;
 			break;
+
+        case 'yesno':
+            if (!['yes', 'no'].includes(arg.toLowerCase())) return false;
+            break;
 	}
 	return true;
 }
