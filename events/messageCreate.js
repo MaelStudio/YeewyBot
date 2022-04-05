@@ -1,6 +1,6 @@
-const config = require('./config.js');
-const util = require('./util.js');
-const database = require('./database.js');
+const config = require('../config.js');
+const util = require('../util.js');
+const database = require('../database.js');
 
 // argument checker
 function isValidArgument(arg, argType, message) {
