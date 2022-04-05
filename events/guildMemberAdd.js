@@ -1,7 +1,7 @@
+const { MessageEmbed } = require('discord.js');
 const config = require('../config.js');
 const util = require('../util.js');
 const database = require('../database.js');
-const { db } = require('../models/member.js');
 
 module.exports = {
     name: 'guildMemberAdd',
