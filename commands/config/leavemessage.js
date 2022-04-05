@@ -5,8 +5,8 @@ const util = require('../../util');
 module.exports = {
 	name: 'leavemessage',
 	description: 'Set a message to say goodbye to members that leave.',
-	usage: 'leavemessage [channel] [message]',
-	args: { required: ['channel', 'text'] },
+	usage: 'leavemessage [channel] [embed: yes | no] [message]',
+	args: { required: ['channel', 'yesno', 'text'] },
 	permission: 'ADMINISTRATOR',
 	aliases: ['leave-message'],
 	category: 'Configuration',
@@ -15,12 +15,19 @@ module.exports = {
 	async execute(message, args) {
 
 		const channel = util.getChannelFromArg(args[0], message.guild);
+		let isEmbed;
+		if(args[1].toLowerCase() === 'yes') {
+			isEmbed = true;
+		} else {
+			isEmbed = false;
+		}
 		const leaveMessage = args.slice(1).join(' ');
 		const dbGuild = await database.getGuild(message.guild);
 		
 		const leave = {
 			message: leaveMessage,
-			channel: channel.id
+			channel: channel.id,
+			embed: isEmbed
 		}
 		await dbGuild.updateOne({ leave: leave });
 
