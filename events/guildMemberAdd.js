@@ -1,6 +1,7 @@
 const config = require('../config.js');
 const util = require('../util.js');
 const database = require('../database.js');
+const { db } = require('../models/member.js');
 
 module.exports = {
     name: 'guildMemberAdd',
@@ -11,6 +12,15 @@ module.exports = {
         const channel = member.guild.channels.cache.get(dbGuild.join.channel);
         const message = dbGuild.join.message;
 
-        channel.send(message);
+        if(dbGuild.join.embed) {
+            let embed = new MessageEmbed()
+                .setColor('#47ff4d')
+                .setDescription(message)
+                .setAuthor(member.user.tag, member.user.avatarURL())
+            channel.send({ embeds: [embed] });
+        } else {
+            channel.send(message);
+        }
+        
     }
 }
