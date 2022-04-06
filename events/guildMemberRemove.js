@@ -12,7 +12,7 @@ module.exports = {
 
         if(dbGuild.leave.embed) {
             let embed = new MessageEmbed()
-                .setColor('#47ff4d')
+                .setColor('#ff3a3a')
                 .setDescription(message)
                 .setAuthor(member.user.tag, member.user.avatarURL())
             channel.send({ embeds: [embed] });
