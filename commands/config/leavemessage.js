@@ -4,7 +4,7 @@ const util = require('../../util');
 
 module.exports = {
 	name: 'leavemessage',
-	description: 'Set a message to say goodbye to members that leave.\nVariables:\n[member.username]\n[member.tag]\n[member.mention]\n[server.name]\n[server.memberCount]',
+	description: 'Set a message to say goodbye to members that leave.\n\nVariables:\n`[member.username]`\n`[member.tag]`\n`[member.mention]`\n`[server.name]`\n`[server.memberCount]`',
 	usage: 'leavemessage [channel] [embed: yes | no] [message]',
 	args: { required: ['channel', 'yesno', 'text'] },
 	permission: 'ADMINISTRATOR',

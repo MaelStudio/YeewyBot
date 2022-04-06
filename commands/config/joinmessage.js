@@ -4,7 +4,7 @@ const util = require('../../util');
 
 module.exports = {
 	name: 'joinmessage',
-	description: 'Set a message to welcome new members.\nVariables:\n[member.username]\n[member.tag]\n[member.mention]\n[server.name]\n[server.memberCount]',
+	description: 'Set a message to welcome new members.\n\nVariables:\n`[member.username]`\n`[member.tag]`\n`[member.mention]`\n`[server.name]`\n`[server.memberCount]`',
 	usage: 'joinmessage [channel] [embed: yes | no] [message]',
 	args: { required: ['channel', 'yesno', 'text'] },
 	permission: 'ADMINISTRATOR',
