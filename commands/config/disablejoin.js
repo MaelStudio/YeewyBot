@@ -9,7 +9,7 @@ module.exports = {
 	permission: 'ADMINISTRATOR',
 	aliases: ['disable-join'],
 	category: 'Configuration',
-	image: 'https://cdn-icons-png.flaticon.com/512/817/817615.png',
+	image: 'https://imgur.com/a/Oi9OVt2',
 
 	async execute(message, args) {
 

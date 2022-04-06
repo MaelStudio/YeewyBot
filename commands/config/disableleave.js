@@ -9,7 +9,7 @@ module.exports = {
 	permission: 'ADMINISTRATOR',
 	aliases: ['disable-leave'],
 	category: 'Configuration',
-    image: 'https://cdn-icons-png.flaticon.com/512/3798/3798302.png',
+    image: 'https://imgur.com/a/d9jvZPP',
 
 	async execute(message, args) {
 
