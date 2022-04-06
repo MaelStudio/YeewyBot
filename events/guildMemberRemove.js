@@ -10,6 +10,13 @@ module.exports = {
         const channel = member.guild.channels.cache.get(dbGuild.leave.channel);
         const message = dbGuild.leave.message;
 
+        // replace variables
+        message = message.replace('[member.username]', member.user.username);
+        message = message.replace('[member.tag]', member.user.tag);
+        message = message.replace('[member.mention]', `<@${member.id}>`);
+        message = message.replace('[server.name]', member.guild.name);
+        message = message.replace('[server.memberCount]', member.guild.memberCount.toString());
+        
         if(dbGuild.leave.embed) {
             let embed = new MessageEmbed()
                 .setColor('#ff3a3a')
