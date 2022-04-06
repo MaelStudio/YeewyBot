@@ -8,7 +8,7 @@ module.exports = {
         if(!dbGuild.join) return;
 
         const channel = member.guild.channels.cache.get(dbGuild.join.channel);
-        const message = dbGuild.join.message;
+        let message = dbGuild.join.message;
 
         // replace variables
         message = message.replace('[member.username]', member.user.username);

@@ -8,7 +8,7 @@ module.exports = {
         if(!dbGuild.leave) return;
 
         const channel = member.guild.channels.cache.get(dbGuild.leave.channel);
-        const message = dbGuild.leave.message;
+        let message = dbGuild.leave.message;
 
         // replace variables
         message = message.replace('[member.username]', member.user.username);
@@ -16,7 +16,7 @@ module.exports = {
         message = message.replace('[member.mention]', `<@${member.id}>`);
         message = message.replace('[server.name]', member.guild.name);
         message = message.replace('[server.memberCount]', member.guild.memberCount.toString());
-        
+
         if(dbGuild.leave.embed) {
             let embed = new MessageEmbed()
                 .setColor('#ff3a3a')
