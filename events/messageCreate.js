@@ -49,7 +49,7 @@ module.exports = {
         prefix = prefix['prefix'];
 
         // mention
-        if (message.content === '<@!809060998015090741>') {
+        if (message.content === '<@809060998015090741>' || message.content === '<@!809060998015090741>') {
             let embed = new MessageEmbed()
                 .setColor('#ffb5ed')
                 .setTitle(`My prefix in this server is ${prefix}`)
