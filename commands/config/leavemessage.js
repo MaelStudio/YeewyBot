@@ -21,7 +21,7 @@ module.exports = {
 		} else {
 			isEmbed = false;
 		}
-		const leaveMessage = args.slice(1).join(' ');
+		const leaveMessage = args.slice(2).join(' ');
 		const dbGuild = await database.getGuild(message.guild);
 		
 		const leave = {
