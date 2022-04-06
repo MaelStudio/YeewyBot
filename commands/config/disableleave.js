@@ -9,7 +9,7 @@ module.exports = {
 	permission: 'ADMINISTRATOR',
 	aliases: ['disable-leave'],
 	category: 'Configuration',
-    image: 'https://imgur.com/a/d9jvZPP',
+    image: 'https://i.imgur.com/YUEkiRp.png',
 
 	async execute(message, args) {
 

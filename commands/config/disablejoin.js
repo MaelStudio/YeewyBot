@@ -9,7 +9,7 @@ module.exports = {
 	permission: 'ADMINISTRATOR',
 	aliases: ['disable-join'],
 	category: 'Configuration',
-	image: 'https://imgur.com/a/Oi9OVt2',
+	image: 'https://i.imgur.com/Pk8qTZn.png',
 
 	async execute(message, args) {
 
