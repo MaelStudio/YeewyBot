@@ -9,7 +9,7 @@ const util = require('./util.js');
 const database = require('./database.js');
 
 // create discord client
-const intents = new Discord.Intents(32767)
+const intents = new Discord.Intents(32767);
 const client = new Discord.Client({ intents });
 
 
