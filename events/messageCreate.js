@@ -117,6 +117,7 @@ module.exports = {
                     .setColor('#666768')
                     .setTitle('📎 • Wrong command usage')
                     .setDescription(`Invalid arguments specified: \`${prefix + command.usage}\``)
+                    .setFooter(`Use y.help ${command.name} to get help on this command`)
                     .setAuthor(message.author.tag, message.author.avatarURL())
                 message.channel.send({ embeds: [embed] });
                 return;
