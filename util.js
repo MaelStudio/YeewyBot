@@ -5,7 +5,8 @@ module.exports = {
 	addLeadingZero,
 	timeConverter,
 	getMemberFromArg,
-	getChannelFromArg
+	getChannelFromArg,
+	getRoleFromArg
 }
 
 function toMs(value, unit) {
@@ -70,6 +71,12 @@ function getMemberFromArg(arg, guild) {
 
 function getChannelFromArg(arg, guild) {
 	if (!arg) return;
-	const member = guild.channels.cache.find(c => c.id == arg || c.id == getIdFromMention(arg) || c.name == arg);
-	return member;
+	const channel = guild.channels.cache.find(c => c.id == arg || c.id == getIdFromMention(arg) || c.name == arg);
+	return channel;
+}
+
+function getRoleFromArg(arg, guild) {
+	if (!arg) return;
+	const role = guild.roles.cache.find(r => r.id == arg || r.name == arg || r.id == getIdFromMention(arg));
+	return role;
 }
