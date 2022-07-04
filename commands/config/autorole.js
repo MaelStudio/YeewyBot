@@ -6,17 +6,16 @@ module.exports = {
 	name: 'autorole',
 	description: 'Choose a role that will automatically be assigned to new members.',
 	usage: 'autorole [role]',
-	args: { required: [''] },
+	args: { required: ['role'] },
 	permission: 'ADMINISTRATOR',
 	aliases: ['auto-role', 'joinrole', 'join-role'],
 	category: 'Configuration',
 	image: 'https://cdn-icons-png.flaticon.com/512/681/681392.png',
 
 	async execute(message, args) {
-		console.log(message.guild.roles.cache)
 		const role = util.getRoleFromArg(args[0], message.guild);
 		const dbGuild = await database.getGuild(message.guild);
-		//await dbGuild.updateOne({ autoRole: role.id }); // role assignment on guildMemberAdd event todo
+		await dbGuild.updateOne({ autoRole: role.id }); // role assignment on guildMemberAdd event todo
 
 		let embed = new MessageEmbed()
 			.setColor('#47ff4d')
