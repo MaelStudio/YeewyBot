@@ -5,7 +5,8 @@ const guildSchema = new Schema({
   guildId: String,
   prefix: String,
   join: Object,
-  leave: Object
+  leave: Object,
+  autoRole: String
 }, { timestamps: true });
 
 const Guild = mongoose.model('Guild', guildSchema);
