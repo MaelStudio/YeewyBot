@@ -7,6 +7,10 @@ module.exports = {
     async execute (client) {
         client.user.setPresence({ activities: [{ name: 'Starting up...', type: 'PLAYING' }], status: 'online' });
         const guildIds = client.guilds.cache.map(guild => guild.id);
+        for(const guild in client.guilds.cache) {
+            await guild.members.fetch()
+            await guild.roles.fetch()
+        }
 
         console.log(`[+] Logged in as ${client.user.tag}`);
         console.log('——————————————————————————————');
