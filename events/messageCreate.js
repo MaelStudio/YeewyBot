@@ -9,27 +9,35 @@ function isValidArgument(arg, argType, message) {
 
 		case 'member':
 			if (!util.getMemberFromArg(arg, message.guild)) return false;
+            break;
 		
 		case 'channel':
 			if(!util.getChannelFromArg(arg, message.guild)) return false;
+            break;
         
         case 'role':
 			if (!util.getRoleFromArg(arg, message.guild)) return false;
+            break;
 
 		case 'number':
 			if(isNaN(arg)) return false;
+            break;
 		
 		case 'numberall':
 			if (isNaN(arg) && arg.toLowerCase() != 'all') return false;
+            break;
 
 		case 'integer':
 			if(isNaN(arg) || arg % 1 !== 0) return false;
+            break;
 		
 		case 'color':
 			if (!['red', 'black'].includes(arg.toLowerCase())) return false;
+            break;
 
         case 'yesno':
             if (!['yes', 'no'].includes(arg.toLowerCase())) return false;
+            break;
 	}
 	return true;
 }
