@@ -38,7 +38,7 @@ module.exports = {
 
         // assign autorole
         if(dbGuild.autoRole) {
-            const role = member.guild.roles.get(dbGuild.autoRole);
+            const role = member.guild.roles.cache.get(dbGuild.autoRole);
             member.roles.add(role);
         }
         
