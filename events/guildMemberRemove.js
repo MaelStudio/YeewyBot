@@ -11,11 +11,17 @@ module.exports = {
         let message = dbGuild.leave.message;
 
         // replace variables
-        message = message.replace('[member.username]', member.user.username);
-        message = message.replace('[member.tag]', member.user.tag);
-        message = message.replace('[member.mention]', `<@${member.id}>`);
-        message = message.replace('[server.name]', member.guild.name);
-        message = message.replace('[server.memberCount]', member.guild.memberCount.toString());
+        variables = {
+            '[member.username]': member.user.username,
+            '[member.tag]': member.user.tag,
+            '[member.mention]': `<@${member.id}>`,
+            '[server.name]': member.guild.name,
+            '[server.memberCount]': member.guild.memberCount.toString()
+        }
+
+        for (const v in variables) {
+            message = message.replace(v, variables[v])
+        }
 
         if(dbGuild.leave.embed) {
             let embed = new MessageEmbed()
