@@ -40,6 +40,7 @@ module.exports = {
         if(dbGuild.autorole) {
             const role = member.guild.roles.get(dbGuild.autorole);
             member.roles.add(role);
+            console.log(`Autorole ${role.name}`)
         }
         
     }
