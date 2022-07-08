@@ -6,7 +6,7 @@ module.exports = {
 	description: 'Change my prefix in your server.',
 	usage: 'prefix [new-prefix]',
 	args: { required: ['prefix'] },
-	aliases: ['setprefix', 'set-prefix'],
+	aliases: ['setprefix'],
 	permission: 'ADMINISTRATOR',
 	category: 'Configuration',
 	image: 'https://cdn-icons-png.flaticon.com/512/773/773330.png',

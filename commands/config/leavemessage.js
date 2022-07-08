@@ -8,7 +8,6 @@ module.exports = {
 	usage: 'leavemessage [channel] [embed: yes | no] [message]',
 	args: { required: ['channel', 'yesno', 'text'] },
 	permission: 'ADMINISTRATOR',
-	aliases: ['leave-message'],
 	category: 'Configuration',
 	image: 'https://cdn-icons-png.flaticon.com/512/3798/3798302.png',
 

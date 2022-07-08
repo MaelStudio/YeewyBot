@@ -19,7 +19,6 @@ module.exports = {
 	name: 'time',
 	description: 'Get the time in different cities.',
 	usage: 'time',
-	aliases: ['whattimeisit', 'what-time-is-it'],
 	category: 'Fun',
 	image: 'https://cdn-icons-png.flaticon.com/512/2784/2784459.png',
 

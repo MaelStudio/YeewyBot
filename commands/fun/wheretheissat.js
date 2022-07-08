@@ -5,7 +5,7 @@ module.exports = {
 	name: 'wheretheissat',
 	description: 'Get the current ISS\'s coordinates and other info.',
 	usage: 'wheretheissat',
-	aliases: ['wtia', 'where-the-iss-at'],
+	aliases: ['wtia'],
 	category: 'Fun',
 	image: 'https://cdn-icons-png.flaticon.com/512/662/662922.png',
 

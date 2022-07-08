@@ -8,7 +8,6 @@ module.exports = {
 	usage: 'joinmessage [channel] [embed: yes | no] [message]',
 	args: { required: ['channel', 'yesno', 'text'] },
 	permission: 'ADMINISTRATOR',
-	aliases: ['join-message'],
 	category: 'Configuration',
 	image: 'https://cdn-icons-png.flaticon.com/512/817/817615.png',
 

@@ -8,7 +8,7 @@ module.exports = {
 	usage: 'autorole [role]',
 	args: { required: ['role'] },
 	permission: 'ADMINISTRATOR',
-	aliases: ['auto-role', 'joinrole', 'join-role'],
+	aliases: ['joinrole'],
 	category: 'Configuration',
 	image: 'https://cdn-icons-png.flaticon.com/512/681/681392.png',
 

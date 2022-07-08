@@ -7,7 +7,6 @@ module.exports = {
 	description: 'Disables the server\'s leave message.',
 	usage: 'disableleave',
 	permission: 'ADMINISTRATOR',
-	aliases: ['disable-leave'],
 	category: 'Configuration',
     image: 'https://i.imgur.com/YUEkiRp.png',
 

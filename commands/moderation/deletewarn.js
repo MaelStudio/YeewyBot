@@ -7,7 +7,7 @@ module.exports = {
 	description: 'Delete a warn from a member of the server.',
 	usage: 'deletewarn [member] [warn-id]',
 	args: { required: ['member', 'text'] },
-    aliases: ['delete-warn', 'removewarn', 'remove-warn'],
+    aliases: ['removewarn', 'unwarn'],
 	permission: 'KICK_MEMBERS',
 	category: 'Moderation',
 	image: 'https://cdn-icons-png.flaticon.com/512/1006/1006555.png',

@@ -5,6 +5,7 @@ module.exports = {
 	description: 'Deletes the last messages of the channel.',
 	usage: 'clear [amount]',
 	args: { required: ['integer'] },
+	aliases: ['purge'],
 	permission: 'MANAGE_MESSAGES',
 	category: 'Moderation',
 	image: 'https://cdn-icons-png.flaticon.com/512/2496/2496733.png',

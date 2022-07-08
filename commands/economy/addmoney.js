@@ -7,7 +7,6 @@ module.exports = {
 	description: 'Add money to a member\'s balance.',
 	usage: 'addmoney [member] [amount] <bank | wallet>',
 	args: { required: ['member', 'number'], optional: ['text'] },
-	aliases: ['add-money'],
 	permission: 'ADMINISTRATOR',
 	category: 'Economy',
 	image: 'https://cdn-icons-png.flaticon.com/512/3135/3135679.png',

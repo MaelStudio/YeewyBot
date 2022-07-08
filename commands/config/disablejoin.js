@@ -7,7 +7,6 @@ module.exports = {
 	description: 'Disables the server\'s join message.',
 	usage: 'disablejoin',
 	permission: 'ADMINISTRATOR',
-	aliases: ['disable-join'],
 	category: 'Configuration',
 	image: 'https://i.imgur.com/Pk8qTZn.png',
 
