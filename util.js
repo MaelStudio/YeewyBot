@@ -78,7 +78,5 @@ function getChannelFromArg(arg, guild) {
 function getRoleFromArg(arg, guild) {
 	if (!arg) return;
 	const role = guild.roles.cache.find(r => r.id == arg || r.name == arg || r.id == getIdFromMention(arg));
-	console.log(guild.roles.cache);
-	console.log(role);
 	return role;
 }
