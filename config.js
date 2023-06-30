@@ -12,8 +12,7 @@ module.exports = {
 	  'Want a cookie ? 🍪',
 	  'Who am I ?',
 	  'New commands coming soon ☕',
-	  'Java ≠ JavaScript',
 	  'Stop staring at my status !',
-	  'Dogecoin to the moon 🚀',
+	  'Wow!'
 	]
 }
